@@ -62,6 +62,7 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -95,5 +96,9 @@
                 </div>
             </div>
         </div>
+
+        <div id="example"></div>
+
+        <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>
