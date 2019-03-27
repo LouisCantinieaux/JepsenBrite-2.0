@@ -18,5 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('user', function (Request $request) {
-    return response()->json(['username' => 'Sam', 'email' => 'lol@lol.com']);
+    $user = App\User::find(1);
+    return response()->json($user, 200);
 });

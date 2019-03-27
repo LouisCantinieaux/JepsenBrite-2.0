@@ -62109,7 +62109,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
     _this.state = {
-      name: ''
+      email: ''
     };
     return _this;
   }
@@ -62128,7 +62128,7 @@ function (_Component) {
               case 0:
                 axios.get('api/user').then(function (response) {
                   return _this2.setState({
-                    name: response.data.username
+                    email: response.data.email
                   });
                 });
 
@@ -62161,7 +62161,7 @@ function (_Component) {
         className: "card-header"
       }, "Example Component"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "card-body"
-      }, this.state.name)))));
+      }, this.state.email)))));
     }
   }]);
 

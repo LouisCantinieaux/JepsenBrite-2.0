@@ -5,12 +5,12 @@ export default class Example extends Component {
     constructor(){
       super();
       this.state = {
-        name: ''
+        email: ''
       };
     }
 
     async componentDidMount(){
-      axios.get('api/user').then((response) => this.setState({name: response.data.username}));
+      axios.get('api/user').then((response) => this.setState({email: response.data.email}));
     }
 
     render() {
@@ -22,7 +22,7 @@ export default class Example extends Component {
                             <div className="card-header">Example Component</div>
 
                             <div className="card-body">
-                                {this.state.name}
+                                {this.state.email}
                             </div>
                         </div>
                     </div>
