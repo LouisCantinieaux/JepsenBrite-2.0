@@ -61346,9 +61346,15 @@ function (_Component) {
   _inherits(Example, _Component);
 
   function Example() {
+    var _this;
+
     _classCallCheck(this, Example);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Example).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Example).call(this));
+    _this.state = {
+      name: 5 + 3
+    };
+    return _this;
   }
 
   _createClass(Example, [{
@@ -61366,7 +61372,7 @@ function (_Component) {
         className: "card-header"
       }, "Example Component"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
-      }, "I'm an example component!")))));
+      }, this.state.name)))));
     }
   }]);
 
@@ -61399,8 +61405,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/becode/Bureau/becode_projects/group-project/JepsenBrite/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/becode/Bureau/becode_projects/group-project/JepsenBrite/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/sam/BeCode/Colline/JepsenBrite/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/sam/BeCode/Colline/JepsenBrite/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

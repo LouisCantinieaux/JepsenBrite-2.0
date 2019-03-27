@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 export default class Example extends Component {
+    constructor(){
+      super();
+      this.state = {
+        name: 5+3
+      };
+    }
+
     render() {
         return (
             <div className="container">
@@ -11,7 +18,7 @@ export default class Example extends Component {
                             <div className="card-header">Example Component</div>
 
                             <div className="card-body">
-                                I'm an example component!
+                                {this.state.name}
                             </div>
                         </div>
                     </div>
