@@ -5,8 +5,12 @@ export default class Example extends Component {
     constructor(){
       super();
       this.state = {
-        name: 5+3
+        name: ''
       };
+    }
+
+    async componentDidMount(){
+      axios.get('api/user').then((response) => this.setState({name: response.data.username}));
     }
 
     render() {
