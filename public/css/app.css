@@ -10963,7 +10963,7 @@ section .section-title {
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 50%;
+  width: 100%;
 }
 
 .participant {
@@ -10974,5 +10974,22 @@ section .section-title {
   border-radius: 50%;
   width: 100px;
   height: 100px;
+}
+
+.createPage {
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px lightgrey;
+  width: 60%;
+  margin: auto;
+  padding: 25px;
+}
+
+.createForm {
+  font-size: 150%;
+}
+
+.fileInput {
+  font-size: 75%;
 }
 
