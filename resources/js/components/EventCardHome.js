@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class EventCardHome extends Component {
   render() {
@@ -13,7 +14,9 @@ export default class EventCardHome extends Component {
         {events.map(events => (
         <div className="col-md-4 mt-2">
           <div className="card text-center">
+          <Link to="/event">
             <img className="card-img-top" src="https://picsum.photos/1900/1080?image=235" alt="Card image cap" />
+          </Link>
             <div className="card-body">
               <h5 className="card-title">{events.title}</h5>
               <hr/>

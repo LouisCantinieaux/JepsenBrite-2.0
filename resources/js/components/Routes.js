@@ -6,6 +6,7 @@ import Home from './Home'
 import Login from './Login'
 import Register from './Register'
 import Create from './Create'
+import EventPage from './EventPage'
 
 
 const Routes = () => (
@@ -14,6 +15,7 @@ const Routes = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/create" component={Create} />
+      <Route exact path="/event" component={EventPage} />
     </Switch>)
 
 export default Routes

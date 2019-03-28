@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('{any?}', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('azourau', 'HomeController@index')->name('home');

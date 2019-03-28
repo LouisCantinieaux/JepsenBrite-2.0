@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Nav,Navbar,NavDropdown} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 export default class Navigationbar extends Component {
   render() {
@@ -21,7 +22,7 @@ export default class Navigationbar extends Component {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="/create">Create an article</Nav.Link>
+            <Link className="nav-link" to="/create">Create an article</Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link eventKey={2} href="/register">
               Register
