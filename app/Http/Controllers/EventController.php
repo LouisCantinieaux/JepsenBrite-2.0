@@ -52,6 +52,13 @@ class EventController extends Controller
     public function show(Event $event)
     {
         //
+        
+        $event['participants'] = $event->users()->get(['users.id','name']);
+        foreach ($event['participants'] as $participant) {
+            unset($participant['pivot']);
+        }
+        
+        return response()->json($event, 200);
     }
 
     /**

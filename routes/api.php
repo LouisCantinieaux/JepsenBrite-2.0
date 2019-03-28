@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
+Route::get('events/{event}', 'EventController@show');
 
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'AuthController@logout');
@@ -22,4 +23,5 @@ Route::middleware('auth:api')->group(function () {
     Route::post('me', 'AuthController@me');
 
     Route::post('events', 'EventController@create');
+    Route::post('events/{event}/register', 'ParticipationController@create');
 });

@@ -23,8 +23,8 @@ class Event extends Model
      * @var array
      */
     protected $casts = [
-        'begin_time' => 'datetime',
-        'end_time' => 'datetime'
+        'begin_time' => 'datetimetz',
+        'end_time' => 'datetimetz'
     ];
 
     /**
@@ -36,5 +36,10 @@ class Event extends Model
 
     public function creator(){
         return $this->belongsTo('App\User', 'creator_id');
+    }
+    public function users()
+    {
+        # code...
+        return $this->belongsToMany('App\User', 'participations');
     }
 }

@@ -57,4 +57,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    public function events(){
+        return $this->belongsToMany('App/Event', 'participations');
+    }
 }
