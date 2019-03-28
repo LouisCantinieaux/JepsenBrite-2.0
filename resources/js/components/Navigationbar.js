@@ -5,7 +5,7 @@ export default class Navigationbar extends Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-        <Navbar.Brand href="/">Navbar</Navbar.Brand>
+        <Navbar.Brand href="/">JepsenBrite</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="responsive-navbar-nav">
