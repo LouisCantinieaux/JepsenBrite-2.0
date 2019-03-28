@@ -13,4 +13,4 @@
 
 Route::get('{path?}', function () {
     return view('home');
-});
+})->name('home');
