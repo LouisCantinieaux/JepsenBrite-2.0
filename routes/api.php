@@ -14,20 +14,12 @@ use Illuminate\Http\Request;
 */
 
 Route::post('login', 'AuthController@login');
+Route::post('register', 'AuthController@register');
 
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 
-    Route::post('events', function(){
-        return \App\Event::create([
-            'title' => 'test event',
-            'creator_id' => '1',
-            'description' => 'test description',
-            'begin_time' => now(),
-            'end_time' => now(),
-            'image' => 'azeaze'
-        ]);
-    });
+    Route::post('events', 'EventController@create');
 });

@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->dateTimeTz('begin_time');
             $table->dateTimeTz('end_time');
+            $table->text('location');
             $table->text('image');
             $table->bigInteger('creator_id');
             $table->foreign('creator_id')->references('id')->on('users');

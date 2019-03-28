@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use Illuminate\Http\Request;
+use Auth;
 
 class EventController extends Controller
 {
@@ -22,9 +23,13 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $params = $request->all();
+        $params['creator_id'] = Auth::user()->id;
+        $event = \App\Event::create($params);
+        $event['creator'] = $event->creator()->get()[0];
+        return response()->json($event, 200);
     }
 
     /**

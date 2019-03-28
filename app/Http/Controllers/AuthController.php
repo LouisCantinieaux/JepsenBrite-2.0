@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth\RegisterController;
 
 class AuthController extends Controller
 {
@@ -14,7 +15,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -28,6 +29,23 @@ class AuthController extends Controller
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+    /**
+     * Register a user and log them in.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register()
+    {
+        $credentials = request(['name', 'email', 'password']);
+        RegisterController::create($credentials);
+
+        if (! $token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Couldn\'t register user.'], 500);
         }
 
         return $this->respondWithToken($token);
