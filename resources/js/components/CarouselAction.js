@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button'
 export default class CarouselAction extends Component {
   constructor(props, context) {
     super(props, context);
-
     this.handleSelect = this.handleSelect.bind(this);
 
     this.state = {
@@ -24,6 +23,7 @@ export default class CarouselAction extends Component {
 
   render() {
     const { index, direction } = this.state;
+    const { events } = this.props
 
     return (
       <Carousel
@@ -31,7 +31,7 @@ export default class CarouselAction extends Component {
         direction={direction}
         onSelect={this.handleSelect}
       >
-
+      {events.map(events => (
         <Carousel.Item>
           <img
             className="d-block w-100 vh-100 ofc"
@@ -41,11 +41,12 @@ export default class CarouselAction extends Component {
           <Carousel.Caption>
             <Link to="/">
               <Button>
-                View more info
+                View more info on {events.title}
               </Button>
             </Link>
           </Carousel.Caption>
         </Carousel.Item>
+      ))}
         
       </Carousel>
     );
