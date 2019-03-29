@@ -79568,6 +79568,12 @@ function (_Component) {
   _createClass(Create, [{
     key: "render",
     value: function render() {
+      $(function () {
+        $('#datetimepicker12').datetimepicker({
+          inline: true,
+          sideBySide: true
+        });
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "createPage mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -79587,10 +79593,7 @@ function (_Component) {
         as: "textarea",
         rows: "3",
         placeholder: "Description"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "What's the date of your event ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-        className: "mb-3",
-        type: "date"
-      }))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "What's the date of your event ?"))));
     }
   }]);
 
