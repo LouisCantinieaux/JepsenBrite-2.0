@@ -80181,7 +80181,9 @@ function (_Component) {
   _createClass(Layout, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigationbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Routes__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Navigationbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content vh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Routes__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }]);
 
@@ -80321,43 +80323,209 @@ function (_Component) {
   _createClass(Navigationbar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-        collapseOnSelect: true,
-        expand: "md",
-        bg: "dark",
-        variant: "dark"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
-        href: "/"
-      }, "JepsenBrite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
-        "aria-controls": "responsive-navbar-nav"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, {
-        id: "responsive-navbar-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], {
-        className: "mr-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#features"
-      }, "Features"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#pricing"
-      }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
-        title: "Dropdown",
-        id: "collasible-nav-dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.1"
-      }, "Action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.2"
-      }, "Another action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.3"
-      }, "Something"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.4"
-      }, "Separated link"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        className: "nav-link",
-        to: "/create"
-      }, "Create an article"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "/login"
-      }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        eventKey: 2,
-        href: "/register"
-      }, "Register"))));
+      $(document).ready(function () {
+        $('.button-left').click(function () {
+          $('.sidebar').toggleClass('fliph');
+        });
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("aside", {
+        class: "left-sidebar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "sidebar left vh-100"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        class: "list-sidebar bg-defoult"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "javascript:void();",
+        class: "button-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-fw fa-bars "
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "user-panel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "pull-left image"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "http://via.placeholder.com/160x160",
+        class: "rounded-circle",
+        alt: "User Image"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "pull-left info"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "bootstrap develop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-circle text-success"
+      }), " Online"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        class: "list-sidebar bg-defoult"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "data-toggle": "collapse",
+        "data-target": "#dashboard",
+        class: "collapsed active"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-th-large"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, " Dashboards "), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-chevron-left pull-right"
+      }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        class: "sub-menu collapse",
+        id: "dashboard"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        class: "active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "CSS3 Animation")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "General")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Buttons")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Tabs & Accordions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Typography")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "FontAwesome")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Slider")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Panels")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Widgets")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Bootstrap Model")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-diamond"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Layouts")), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "data-toggle": "collapse",
+        "data-target": "#products",
+        class: "collapsed active"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-bar-chart-o"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Graphs"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-chevron-left pull-right"
+      }), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        class: "sub-menu collapse",
+        id: "products"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        class: "active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "CSS3 Animation")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "General")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Buttons")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Tabs & Accordions")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Typography")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "FontAwesome")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Slider")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Panels")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Widgets")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, "Bootstrap Model")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-laptop"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Grid options")), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "data-toggle": "collapse",
+        "data-target": "#tables",
+        class: "collapsed active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-table"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Tables"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-chevron-left pull-right"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        class: "sub-menu collapse",
+        id: "tables"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Static Tables")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Data Tables")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Foo Tables")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " jqGrid")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        "data-toggle": "collapse",
+        "data-target": "#e-commerce",
+        class: "collapsed active"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-shopping-cart"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "E-commerce"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "fa fa-chevron-left pull-right"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        class: "sub-menu collapse",
+        id: "e-commerce"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Products grid")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Products list")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, "Product edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Product detail")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, "Cart")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Orders")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, " Credit Card form"), " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: ""
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-pie-chart"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Metrics"), " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-files-o"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Other Pages")), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-files-o"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Other Pages")), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-files-o"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Other Pages")), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-files-o"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Other Pages")), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        class: "fa fa-files-o"
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        class: "nav-label"
+      }, "Other Pages")), " "))));
     }
   }]);
 
