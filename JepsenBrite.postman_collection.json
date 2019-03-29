@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c34f2c14-93a0-4264-9802-c3185d811303",
+		"_postman_id": "f8832380-cbb7-4b06-a836-2ddae14d8a1b",
 		"name": "JepsenBrite",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -185,6 +185,18 @@
 		},
 		{
 			"name": "Create event",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0e641534-f4af-4e82-b075-55b48f58ddab",
+						"exec": [
+							"postman.setEnvironmentVariable(\"event_id\", JSON.parse(responseBody).id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -197,7 +209,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"title\" : \"test event\",\n\t\"description\" : \"test description\",\n\t\"begin_time\" : \"2019-03-28 07:29:54\",\n\t\"end_time\" : \"2019-03-28 07:29:54\",\n\t\"location\" : \"Rue de Mulhouse, 36 - 4000, Liège\",\n\t\"image\" : \"azeaze\"\n}"
 				},
 				"url": {
 					"raw": "{{host}}/api/events",
@@ -207,6 +219,68 @@
 					"path": [
 						"api",
 						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register to event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/events/{{event_id}}/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"{{event_id}}",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showEvent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/events/{{event_id}}/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"events",
+						"{{event_id}}",
+						"register"
 					]
 				}
 			},
