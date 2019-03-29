@@ -6,7 +6,7 @@ export default class Navigationbar extends Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
-        <Navbar.Brand href="/">JepsenBrite</Navbar.Brand>
+      <Link className="navbar-brand" to="/">JepsenBrite</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -23,10 +23,10 @@ export default class Navigationbar extends Component {
           </Nav>
           <Nav>
             <Link className="nav-link" to="/create">Create an article</Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link eventKey={2} href="/register">
+            <Link className="nav-link" to="/login">Login</Link>
+            <Link className="nav-link" to="/register">
               Register
-            </Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

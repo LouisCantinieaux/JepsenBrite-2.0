@@ -12,10 +12,10 @@ export default class EventCardHome extends Component {
       <div className="row mx-auto">
 
         {events.map(events => (
-        <div className="col-md-4 mt-2">
+        <div className="col-md-4 mt-2" key={events.title}>
           <div className="card text-center">
           <Link to="/event">
-            <img className="card-img-top" src="https://picsum.photos/1900/1080?image=235" alt="Card image cap" />
+            <img className="card-img-top" src="https://picsum.photos/1900/1080?image=235" alt={events.title} />
           </Link>
             <div className="card-body">
               <h5 className="card-title">{events.title}</h5>

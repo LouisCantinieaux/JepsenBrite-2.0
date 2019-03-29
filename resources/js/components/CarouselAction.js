@@ -32,11 +32,11 @@ export default class CarouselAction extends Component {
         onSelect={this.handleSelect}
       >
       {events.map(events => (
-        <Carousel.Item>
+        <Carousel.Item key={events.title}>
           <img
             className="d-block w-100 vh-100 ofc"
             src="https://i.ytimg.com/vi/5iGE_wIDOTk/maxresdefault.jpg"
-            alt="First slide"
+            alt={events.title}
           />
           <Carousel.Caption>
             <Link to="/">
