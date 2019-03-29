@@ -36,7 +36,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Sam\",\n\t\"password\":\"password\",\n\t\"email\":\"samueldegueldre@gmail.com\"\n}"
+					"raw": "{\n\t\"name\": \"oda\",\n\t\"password\":\"password\",\n\t\"email\":\"fgoekeofef@gmail.com\"\n}"
 				},
 				"url": {
 					"raw": "{{host}}/api/register",
@@ -238,7 +238,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"reminder_date\":\"2019-03-28 08:55:50\"\n}"
 				},
 				"url": {
 					"raw": "{{host}}/api/events/{{event_id}}/register",
@@ -257,8 +257,11 @@
 		},
 		{
 			"name": "showEvent",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -272,15 +275,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{host}}/api/events/{{event_id}}/register",
+					"raw": "{{host}}/api/events/{{event_id}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"events",
-						"{{event_id}}",
-						"register"
+						"{{event_id}}"
 					]
 				}
 			},
