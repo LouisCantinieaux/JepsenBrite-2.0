@@ -34,7 +34,7 @@ export default class CarouselAction extends Component {
       {events.map(events => (
         <Carousel.Item>
           <img
-            className="d-block w-100 vh-100 ofc"
+            className="carouselImg d-block w-100 ofc"
             src="https://i.ytimg.com/vi/5iGE_wIDOTk/maxresdefault.jpg"
             alt="First slide"
           />

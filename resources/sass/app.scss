@@ -11,11 +11,31 @@
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
 }
 
+@keyframes turn{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.carouselImg{
+  height: 85vh;
+}
 
 .ofc{
   object-fit: cover;
+}
+
+.rotate:hover{
+  animation-name: turn;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .container-card{
@@ -111,6 +131,7 @@ margin-right: 5px;
   margin-right: auto;
   box-shadow: 0px 0px 4px lightgrey;
   border-radius: 0px 0px 10px 10px;
+  background-color: white;
 }
 
 .box6{
