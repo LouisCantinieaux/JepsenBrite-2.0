@@ -8,7 +8,10 @@ export default class Layout extends Component {
     return (
       <React.Fragment>
         <Navigationbar/>
+        <main>
+
         <Routes/>
+        </main>
         <Footer />
       </React.Fragment>
     )

@@ -38,23 +38,23 @@ export default class EventPage extends Component {
           <h3 className="mt-3">Participants (5):</h3>
           <div className="participants">
             <div className="participant text-center">
-              <img className="ofc" src="https://specials-images.forbesimg.com/imageserve/5c76b4b84bbe6f24ad99c370/416x416.jpg?background=000000&cropX1=0&cropX2=4000&cropY1=0&cropY2=4000" />
+              <img className="ofc rotate" src="https://specials-images.forbesimg.com/imageserve/5c76b4b84bbe6f24ad99c370/416x416.jpg?background=000000&cropX1=0&cropX2=4000&cropY1=0&cropY2=4000" />
               <p>Bill</p>
             </div>
             <div className="participant text-center">
-              <img className="ofc" src="http://jactiv.ouest-france.fr/sites/default/files/imagecache/article-detail/images/2018/04/11/SI_6185723_1.jpg" />
+              <img className="ofc rotate" src="http://jactiv.ouest-france.fr/sites/default/files/imagecache/article-detail/images/2018/04/11/SI_6185723_1.jpg" />
               <p>Angèle</p>
             </div>
             <div className="participant text-center">
-              <img className="ofc" src="https://www.ballecourbe.ca/wp-content/uploads/2015/10/jcv-960x540.png" />
+              <img className="ofc rotate" src="https://www.ballecourbe.ca/wp-content/uploads/2015/10/jcv-960x540.png" />
               <p>Jean-Claude</p>
             </div>
             <div className="participant text-center">
-              <img className="ofc" src="https://www.nouvelordremondial.cc/wp-content/uploads/2018/07/durif-pas-mort.jpg" />
+              <img className="ofc rotate" src="https://www.nouvelordremondial.cc/wp-content/uploads/2018/07/durif-pas-mort.jpg" />
               <p>Sylvain</p>
             </div>
             <div className="participant text-center">
-              <img className="ofc" src="https://basketswag.files.wordpress.com/2016/03/eddy-malou-generator.jpg?w=200" />
+              <img className="ofc rotate" src="https://basketswag.files.wordpress.com/2016/03/eddy-malou-generator.jpg?w=200" />
               <p>Eddy</p>
             </div>
           </div>

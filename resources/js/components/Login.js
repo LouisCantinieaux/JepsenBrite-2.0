@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {Container, Form, Button} from 'react-bootstrap'
 import Axios from 'axios'
-import './Global'
 
-export default class Login extends Component {
-  constructor(props){
-    super(props)
+import {Provider, Context} from '../store/store'
+class Login extends Component { 
+  constructor(props, context){
+    super(props, context)
     this.onChangeName=this.onChangeName.bind(this);
     this.onChangePassword=this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -42,15 +42,15 @@ export default class Login extends Component {
           config: { headers: {'Content-Type': 'application/json' }},
           data : obj
         });
-        console.log(request);
         response = await request;
     } catch(e) {
       console.log(e.response);
     }
     (response) => { console.log(response) }
-    global.token= response.data.access_token
-    global.pseudo= this.state.name
-    console.log(global.token)
+    this.context.state.login(response.data.access_token)
+    // global.token= response.data.access_token
+    // global.pseudo= this.state.name
+    // console.log(global.token)
     this.props.history.push('/')
   }
   render() {
@@ -83,3 +83,7 @@ export default class Login extends Component {
     )
   }
 }
+
+Login.contextType = Context
+
+export default Login
