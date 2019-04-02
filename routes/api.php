@@ -24,4 +24,6 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('events', 'EventController@create');
     Route::post('events/{event}/register', 'ParticipationController@create');
+
+    Route::get('events', 'EventController@showAll');
 });

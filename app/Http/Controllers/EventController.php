@@ -45,20 +45,37 @@ class EventController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * Coucou Sam, on s'ammuse bien ^^
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
     public function show(Event $event)
     {
-        //
-        
         $event['participants'] = $event->users()->get(['users.id','name']);
         foreach ($event['participants'] as $participant) {
             unset($participant['pivot']);
         }
-        
+
         return response()->json($event, 200);
+    }
+
+    public function showAll(Request $request)
+    {
+        $max = 20;
+        $events = Event::orderBy('end_time')->orderBy('begin_time');
+        if($from = $request->input('from', false)){
+            $events->where('end_time', '>=', $from);
+        }
+        if($to = $request->input('to', false)){
+            $events->where('begin_time', '<=', $to);
+        }
+        $number = $request->input('number', $max);
+        $number = $number > $max ? $max : $number;
+        $offset = $request->input('offset', 0);
+
+        $events->skip($offset)->take($number);
+
+        return response()->json($events->get(), 200);
     }
 
     /**
