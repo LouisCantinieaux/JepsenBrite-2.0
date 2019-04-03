@@ -23,9 +23,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        Route::bind('eventWithDeleted', function ($id) {
+
+            return \App\Event::withTrashed()->find($id) ?? abort(404);
+        });
     }
 
     /**

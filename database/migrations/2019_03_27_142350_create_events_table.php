@@ -24,6 +24,7 @@ class CreateEventsTable extends Migration
             $table->text('image');
             $table->bigInteger('creator_id');
             $table->foreign('creator_id')->references('id')->on('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

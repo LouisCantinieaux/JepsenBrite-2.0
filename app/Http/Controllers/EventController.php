@@ -49,8 +49,10 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Event $eventWithDeleted)
     {
+        //\Log::info($eventWithDeleted);
+        $event = $eventWithDeleted;
         $event['participants'] = $event->users()->get(['users.id','name']);
         foreach ($event['participants'] as $participant) {
             unset($participant['pivot']);
@@ -79,17 +81,6 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Event $event)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -98,17 +89,21 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $event->update($request->all());
+        return $event;
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Cancels the event.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function cancel(Request $request, Event $event)
     {
-        //
+        \Log::info($event);
+        $event->delete();
+        return response()->json(['message' => 'event has been canceled.']);
     }
 }
