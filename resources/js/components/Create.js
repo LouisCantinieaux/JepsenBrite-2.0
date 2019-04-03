@@ -29,10 +29,11 @@ class Create extends Component {
       start: "",
       end: ""
     }
-    console.log(this.context)
   }
 
-  
+  componentDidUpdate(){
+    this.state
+  }
 
   async onSubmit(data){
     data.preventDefault();
@@ -45,7 +46,6 @@ class Create extends Component {
       "location" : "Rue de Mulhouse, 36 - 4000, Liège",
       "image" : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
     }
-    console.log(obj)
     let response;
     try {
       let request = Axios({
@@ -57,7 +57,6 @@ class Create extends Component {
       });
       response = await request;
     } catch(e) {
-      console.log('caught error');
       console.log(e);
       console.log(e.response);
     }
@@ -128,13 +127,13 @@ class Create extends Component {
       <Form onSubmit={this.onSubmit}>
         <Form.Group className="createForm">
           <Form.Label>First, choose an amazing image to represent your event</Form.Label>
-          <div class="preview text-center">
+          <div className="preview text-center">
                 {this.state.imagePreview}
-                  <div class="browse-button">
-                      <i class="fa fa-pencil-alt"></i>
-                      <input class="browse-input" type="file" name="image" id="UploadedFile" onChange={(e)=>this.handleImageChange(e)} />
+                  <div className="browse-button">
+                      <i className="fa fa-pencil-alt"></i>
+                      <input className="browse-input" type="file" name="image" id="UploadedFile" onChange={(e)=>this.handleImageChange(e)} />
                   </div>
-                  <span class="Error"></span>
+                  <span className="Error"></span>
               </div>
           <Form.Label>What's the name of your event ?</Form.Label>
           <Form.Control className="mb-3" type="text" placeholder="Title" defaultValue={this.state.title} onChange={this.onChangeTitle} />
@@ -149,7 +148,9 @@ class Create extends Component {
           data-enable-time
           value={this.state.start}
           options={{
-            altInput: true
+            altInput: true,
+            time_24hr: true,
+            minDate: "today"
           }}
           onChange={e => this.handleOnChange(e, "start")}
           className="mb-3"
@@ -161,7 +162,9 @@ class Create extends Component {
           data-enable-time
           value={this.state.end}
           options={{
-            altInput: true
+            altInput: true,
+            minDate:this.state.start,
+            time_24hr: true
           }}
           onChange={e => this.handleOnChange(e, "end")}
           className="mb-3"

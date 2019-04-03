@@ -20,7 +20,6 @@ export default class Provider extends Component {
           window.localStorage.setItem("token" , JSON.stringify(tokenKey))
           window.localStorage.setItem("loggedIn", JSON.stringify(true))
           window.localStorage.setItem('name', JSON.stringify('alex'))
-          console.log(window.localStorage.getItem('token'))
         },
       logout : () =>{this.setState({
             loggedIn : false,
@@ -28,20 +27,16 @@ export default class Provider extends Component {
             name:''
           })
           window.localStorage.clear();
-          window.localStorage.setItem("loggedIn", JSON.stringify(false));
         }
     }
   }
   componentDidMount(){
-    console.log(
-      "loggedIn : "+window.localStorage.getItem('loggedIn')
-    )
+
     this.setState({
       token : JSON.parse(window.localStorage.getItem('token')),
       loggedIn : JSON.parse(window.localStorage.getItem('loggedIn')),
       name : JSON.parse(window.localStorage.getItem('name'))
     })
-    console.log(this.state)
   }
   componentDidUpdate(){
     this.state

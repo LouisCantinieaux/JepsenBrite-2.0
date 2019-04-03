@@ -103189,11 +103189,15 @@ function (_Component) {
       start: "",
       end: ""
     };
-    console.log(_this.context);
     return _this;
   }
 
   _createClass(Create, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.state;
+    }
+  }, {
     key: "onSubmit",
     value: function () {
       var _onSubmit = _asyncToGenerator(
@@ -103213,8 +103217,7 @@ function (_Component) {
                   "location": "Rue de Mulhouse, 36 - 4000, Liège",
                   "image": this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
                 };
-                console.log(obj);
-                _context.prev = 3;
+                _context.prev = 2;
                 request = axios__WEBPACK_IMPORTED_MODULE_7___default()({
                   method: 'post',
                   url: '/api/events',
@@ -103225,30 +103228,29 @@ function (_Component) {
                   },
                   data: obj
                 });
-                _context.next = 7;
+                _context.next = 6;
                 return request;
 
-              case 7:
+              case 6:
                 response = _context.sent;
-                _context.next = 15;
+                _context.next = 13;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](3);
-                console.log('caught error');
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](2);
                 console.log(_context.t0);
                 console.log(_context.t0.response);
 
-              case 15:
+              case 13:
                 console.log('ceci est une réponse', response);
 
-              case 16:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 10]]);
+        }, _callee, this, [[2, 9]]);
       }));
 
       function onSubmit(_x) {
@@ -103339,13 +103341,13 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Form"].Group, {
         className: "createForm"
       }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Form"].Label, null, "First, choose an amazing image to represent your event"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-        class: "preview text-center"
+        className: "preview text-center"
       }, this.state.imagePreview, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-        class: "browse-button"
+        className: "browse-button"
       }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("i", {
-        class: "fa fa-pencil-alt"
+        className: "fa fa-pencil-alt"
       }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("input", {
-        class: "browse-input",
+        className: "browse-input",
         type: "file",
         name: "image",
         id: "UploadedFile",
@@ -103353,7 +103355,7 @@ function (_Component) {
           return _this3.handleImageChange(e);
         }
       })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("span", {
-        class: "Error"
+        className: "Error"
       })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Form"].Label, null, "What's the name of your event ?"), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Form"].Control, {
         className: "mb-3",
         type: "text",
@@ -103370,7 +103372,9 @@ function (_Component) {
         "data-enable-time": true,
         value: this.state.start,
         options: {
-          altInput: true
+          altInput: true,
+          time_24hr: true,
+          minDate: "today"
         },
         onChange: function onChange(e) {
           return _this3.handleOnChange(e, "start");
@@ -103381,7 +103385,9 @@ function (_Component) {
         "data-enable-time": true,
         value: this.state.end,
         options: {
-          altInput: true
+          altInput: true,
+          minDate: this.state.start,
+          time_24hr: true
         },
         onChange: function onChange(e) {
           return _this3.handleOnChange(e, "end");
@@ -103480,7 +103486,7 @@ function (_Component) {
           "aria-expanded": "false",
           "aria-controls": "collapse" + events.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-map"
+          className: "fa fa-map"
         }), " Maps")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "collapse",
           id: "collapse" + events.id
@@ -103805,8 +103811,7 @@ function (_Component) {
         "end_time": "2019-03-28 07:29:54",
         "location": "Rue de Mulhouse, 36 - 4000, Liège",
         "image": "azeaze"
-      }],
-      Users: []
+      }]
     };
     return _this;
   }
@@ -104130,8 +104135,7 @@ function (_Component) {
                   password: ''
                 };
                 _context.prev = 2;
-                console.log('ca marche ...'); //console.log(obj)
-
+                //console.log(obj)
                 request = axios__WEBPACK_IMPORTED_MODULE_3___default()({
                   method: 'post',
                   url: '/api/register',
@@ -104142,33 +104146,30 @@ function (_Component) {
                   },
                   data: obj
                 });
-                console.log(request);
-                _context.next = 8;
+                _context.next = 6;
                 return request;
 
-              case 8:
+              case 6:
                 response = _context.sent;
-                console.log('oui');
-                _context.next = 16;
+                _context.next = 12;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](2);
-                console.log('... ou pas');
                 console.log(_context.t0.response);
 
-              case 16:
+              case 12:
                 (function (response) {
                   console.log(response);
                 });
 
-              case 17:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 12]]);
+        }, _callee, this, [[2, 9]]);
       }));
 
       function onSubmit(_x) {
@@ -104553,11 +104554,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "nav-link",
         to: "/events"
-      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#features"
-      }, "Features"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, {
-        href: "#pricing"
-      }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
+      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
         title: "Dropdown",
         id: "collasible-nav-dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
@@ -104571,7 +104568,16 @@ function (_Component) {
       }, "Separated link"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_store_store__WEBPACK_IMPORTED_MODULE_3__["Context"].Consumer, null, function (context) {
         return function () {
           switch (context.state.loggedIn) {
-            case  false || null:
+            case false:
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+                className: "nav-link",
+                to: "/login"
+              }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+                className: "nav-link",
+                to: "/register"
+              }, "Register"));
+
+            case null:
               return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
                 className: "nav-link",
                 to: "/login"
@@ -104581,9 +104587,15 @@ function (_Component) {
               }, "Register"));
 
             case true:
-              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-                className: "nav-link"
-              }, "Welcome, ", context.state.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
+                title: "Welcome, " + context.state.name
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+                to: "/user",
+                className: "dropdown-item"
+              }, "Your profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+                to: "/events",
+                className: "dropdown-item"
+              }, "Your events")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
                 className: "nav-link",
                 to: "/create"
               }, "Create an article"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -104726,7 +104738,6 @@ function (_Component) {
         window.localStorage.setItem("token", JSON.stringify(tokenKey));
         window.localStorage.setItem("loggedIn", JSON.stringify(true));
         window.localStorage.setItem('name', JSON.stringify('alex'));
-        console.log(window.localStorage.getItem('token'));
       },
       logout: function logout() {
         _this.setState({
@@ -104736,7 +104747,6 @@ function (_Component) {
         });
 
         window.localStorage.clear();
-        window.localStorage.setItem("loggedIn", JSON.stringify(false));
       }
     };
     return _this;
@@ -104745,13 +104755,11 @@ function (_Component) {
   _createClass(Provider, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("loggedIn : " + window.localStorage.getItem('loggedIn'));
       this.setState({
         token: JSON.parse(window.localStorage.getItem('token')),
         loggedIn: JSON.parse(window.localStorage.getItem('loggedIn')),
         name: JSON.parse(window.localStorage.getItem('name'))
       });
-      console.log(this.state);
     }
   }, {
     key: "componentDidUpdate",

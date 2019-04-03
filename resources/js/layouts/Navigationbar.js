@@ -19,8 +19,7 @@ class Navigationbar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Link className="nav-link" to="/events">Events</Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -33,14 +32,23 @@ class Navigationbar extends Component {
             {(context) => (
               (() => {
                 switch (context.state.loggedIn) {
-                  case false || null : return <Nav>
+                  case false : return <Nav>
                     <Link className="nav-link" to="/login">Login</Link>
                     <Link className="nav-link" to="/register">
                       Register
                     </Link>
                   </Nav>
+                  case null : return <Nav>
+                  <Link className="nav-link" to="/login">Login</Link>
+                  <Link className="nav-link" to="/register">
+                    Register
+                  </Link>
+                </Nav>
                   case true: return <Nav>
-                    <div className="nav-link">Welcome, {context.state.name}</div>
+                    <NavDropdown title={"Welcome, "+context.state.name} >
+                      <Link to ="/user" className="dropdown-item">Your profile</Link>
+                      <Link to ="/events" className="dropdown-item">Your events</Link>
+                    </NavDropdown>
                     <Link className="nav-link" to="/create">Create an article</Link>
                     <Link className="nav-link" to="/" onClick={context.state.logout} >
                       logout
