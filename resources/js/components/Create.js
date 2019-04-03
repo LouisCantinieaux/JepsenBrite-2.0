@@ -43,7 +43,7 @@ class Create extends Component {
       "description" : this.state.description,
       "begin_time" : this.state.start,
       "end_time" : this.state.end,
-      "location" : "Rue de Mulhouse, 36 - 4000, Liège",
+      "location" : this.state.location,
       "image" : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
     }
     let response;
@@ -111,6 +111,12 @@ class Create extends Component {
     })
   }
 
+  handleChangeLocation(e){
+    this.setState({
+      location : e
+    })
+  }
+
   onChangeTitle(e){
     this.setState({
       title : e.target.value
@@ -137,6 +143,8 @@ class Create extends Component {
               </div>
           <Form.Label>What's the name of your event ?</Form.Label>
           <Form.Control className="mb-3" type="text" placeholder="Title" defaultValue={this.state.title} onChange={this.onChangeTitle} />
+          <Form.Label>Where's your event gonna happen ?</Form.Label>
+          <Form.Control className="mb-3" type="text" placeholder="Location" defaultValue={this.state.location} onChange={this.onChangeLocation} />
           <Form.Label >Tell people more about it</Form.Label>
           <SimpleMDE
             defaultValue={this.state.description}
