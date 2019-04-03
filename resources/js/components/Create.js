@@ -1,39 +1,86 @@
 import 'flatpickr/dist/themes/material_blue.css'
-import "simplemde/dist/simplemde.min.css";
+import "easymde/dist/easymde.min.css";
 
 import React, { Component } from 'react'
 import {Form, Container} from 'react-bootstrap'
 import Flatpickr from 'react-flatpickr'
+import {Provider, Context} from '../store/store'
+import Axios from "axios"
 
 import SimpleMDE from 'react-simplemde-editor';
 
 
-export default class Create extends Component {
-  constructor() {
-    super();
-
+class Create extends Component {
+  constructor(props, context){
+    super(props, context)
+    this.onChangeTitle=this.onChangeTitle.bind(this)
+    this.handleOnChange=this.handleOnChange.bind(this)
+    this.handleChangeDescription= this.handleChangeDescription.bind(this)
+    this.onSubmit=this.onSubmit.bind(this)
     this.state = {
+      title:"",
       description:"",
+      begin_time: "",
+      end_time: "",
+      location : "",
+      image:"",
+      file: '',
+      imagePreviewUrl: '',
       start: "",
       end: ""
-    };
+    }
+    console.log(this.context)
   }
 
-  onSubmit(e){
+  
+
+  async onSubmit(data){
     data.preventDefault();
 
     const obj={
-      "title" : "test event 5",
-      "description" : "test description",
-      "begin_time" : "2019-01-01 07:29:54",
-      "end_time" : "2019-01-02 07:29:54",
+      "title" : this.state.title,
+      "description" : this.state.description,
+      "begin_time" : this.state.start,
+      "end_time" : this.state.end,
       "location" : "Rue de Mulhouse, 36 - 4000, Liège",
-      "image" : "azeaze"
+      "image" : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
     }
+    console.log(obj)
+    let response;
+    try {
+      let request = Axios({
+        method:'post',
+        url : '/api/events',
+        config: { },
+        headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token},
+        data : obj
+      });
+      response = await request;
+    } catch(e) {
+      console.log('caught error');
+      console.log(e);
+      console.log(e.response);
+    }
+    console.log('ceci est une réponse', response);
   }
 
+  handleImageChange(e) {
+    e.preventDefault();
 
-handleOnChange(e, from) {
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file)
+  }
+
+  handleOnChange(e, from) {
     const state = {};
     switch (from) {
       case "start":
@@ -61,8 +108,14 @@ handleOnChange(e, from) {
 
   handleChangeDescription(e){
     this.setState({
-      description : e.target.value
-    });
+      description : e
+    })
+  }
+
+  onChangeTitle(e){
+    this.setState({
+      title : e.target.value
+    })
   }
 // toMysqlFormat(date){
 //   return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
@@ -72,18 +125,24 @@ handleOnChange(e, from) {
   return (
     <div className="createPage mt-3">
     <h1 className="mb-5">Create your own event</h1>
-      <Form>
-        <Form.Group className="createForm" controlId="createForm">
-          <Form.Label htmlFor="image">First, choose an amazing image to represent your event</Form.Label>
-          <Form.Control className="fileInput mb-3" type="file" name="image"/>
-          <Form.Label htmlFor="title">What's the name of your event ?</Form.Label>
-          <Form.Control className="mb-3" type="text" placeholder="Title"/>
-          <Form.Label htmlFor="description" >Tell people more about it</Form.Label>
+      <Form onSubmit={this.onSubmit}>
+        <Form.Group className="createForm">
+          <Form.Label>First, choose an amazing image to represent your event</Form.Label>
+          <div class="preview text-center">
+                {this.state.imagePreview}
+                  <div class="browse-button">
+                      <i class="fa fa-pencil-alt"></i>
+                      <input class="browse-input" type="file" name="image" id="UploadedFile" onChange={(e)=>this.handleImageChange(e)} />
+                  </div>
+                  <span class="Error"></span>
+              </div>
+          <Form.Label>What's the name of your event ?</Form.Label>
+          <Form.Control className="mb-3" type="text" placeholder="Title" defaultValue={this.state.title} onChange={this.onChangeTitle} />
+          <Form.Label >Tell people more about it</Form.Label>
           <SimpleMDE
             defaultValue={this.state.description}
             onChange={this.handleChangeDescription}
           >Description</SimpleMDE>
-          <Form.Control className="mb-3" as="textarea" rows="3" placeholder="Description" />
           <Form.Label htmlFor="eventStart" >When's the start of your event ?</Form.Label>
           <Flatpickr
           name={"start"}
@@ -95,7 +154,7 @@ handleOnChange(e, from) {
           onChange={e => this.handleOnChange(e, "start")}
           className="mb-3"
           />
-          <Form.Label htmlFor="eventEnd">When's the end of your event ?</Form.Label>
+          <Form.Label>When's the end of your event ?</Form.Label>
 
           <Flatpickr
           name={"end"}
@@ -114,3 +173,6 @@ handleOnChange(e, from) {
     )
   }
 }
+Create.contextType = Context
+
+export default Create

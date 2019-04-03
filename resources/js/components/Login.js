@@ -39,7 +39,7 @@ class Login extends Component {
         let request = Axios({
           method:'post',
           url : '/api/login',
-          config: { headers: {'Content-Type': 'application/json' }},
+          headers: {'Content-Type': 'application/json' },
           data : obj
         });
         response = await request;
