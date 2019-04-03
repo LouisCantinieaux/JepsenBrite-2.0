@@ -33,7 +33,7 @@ class Navigationbar extends Component {
             {(context) => (
               (() => {
                 switch (context.state.loggedIn) {
-                  case false : return <Nav>
+                  case false || null : return <Nav>
                     <Link className="nav-link" to="/login">Login</Link>
                     <Link className="nav-link" to="/register">
                       Register
