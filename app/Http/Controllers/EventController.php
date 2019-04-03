@@ -45,31 +45,39 @@ class EventController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * Coucou Sam, on s'ammuse bien ^^
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Event $eventWithDeleted)
     {
-        //
-        
+        //\Log::info($eventWithDeleted);
+        $event = $eventWithDeleted;
         $event['participants'] = $event->users()->get(['users.id','name']);
         foreach ($event['participants'] as $participant) {
             unset($participant['pivot']);
         }
-        
+
         return response()->json($event, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Event $event)
+    public function showAll(Request $request)
     {
-        //
+        $max = 20;
+        $events = Event::orderBy('end_time')->orderBy('begin_time');
+        if($from = $request->input('from', false)){
+            $events->where('end_time', '>=', $from);
+        }
+        if($to = $request->input('to', false)){
+            $events->where('begin_time', '<=', $to);
+        }
+        $number = $request->input('number', $max);
+        $number = $number > $max ? $max : $number;
+        $offset = $request->input('offset', 0);
+
+        $events->skip($offset)->take($number);
+
+        return response()->json($events->get(), 200);
     }
 
     /**
@@ -81,17 +89,21 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $event->update($request->all());
+        return $event;
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Cancels the event.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function cancel(Request $request, Event $event)
     {
-        //
+        \Log::info($event);
+        $event->delete();
+        return response()->json(['message' => 'event has been canceled.']);
     }
 }
