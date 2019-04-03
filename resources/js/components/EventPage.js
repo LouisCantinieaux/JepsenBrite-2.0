@@ -31,6 +31,8 @@ export default class EventPage extends Component {
             Praesent viverra augue erat, sit amet viverra metus lacinia ac. Nunc vel auctor neque, sodales semper turpis. Nam purus justo, varius vitae mauris eget, sagittis fringilla lorem. Vivamus sit amet lorem tristique, lacinia sem et, commodo tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sagittis eros in nisi ullamcorper, non gravida nisl lacinia. Pellentesque diam eros, lobortis lacinia quam ut, mollis pharetra orci. Etiam dignissim ornare turpis, vel auctor lacus mattis id. Curabitur tincidunt odio purus, quis auctor quam malesuada ac. Sed facilisis mattis ornare. Cras et tortor euismod, tempus odio in, malesuada nisi. Ut vitae dignissim ligula, et facilisis lorem. Curabitur id augue est. Praesent semper sagittis mi, ac bibendum sapien pulvinar id.
 
             Nam non malesuada nisl. Nullam ut eleifend erat, eget ultrices libero. Quisque felis urna, pharetra eget urna ac, ultricies efficitur metus. Nullam id nulla purus. Nullam iaculis ex diam, id feugiat erat dictum sed. Suspendisse potenti. Nullam vitae nisl nisl. Nulla id nunc ut enim efficitur sodales. Sed rhoncus pretium arcu nec lacinia. Pellentesque tempus ipsum at magna scelerisque posuere. Pellentesque eu ex nisl. Aenean id orci non lorem ultricies maximus quis vitae diam. Integer scelerisque nisi et leo imperdiet eleifend. In efficitur dapibus leo, a placerat est hendrerit at.
+
+            DONC VIENDÉ SIVOUPLAI !!
           </p>
 
           <Button>I want to participate</Button>
