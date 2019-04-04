@@ -8,6 +8,7 @@ import Register from '../components/Register'
 import Create from '../components/Create'
 import EventPage from '../components/EventPage'
 import Events from '../components/Events'
+import Profile from '../components/Profile'
 
 
 
@@ -19,6 +20,7 @@ const Routes = () => (
       <Route exact path="/create" component={Create} />
       <Route exact path="/event" component={EventPage} />
       <Route exact path="/events" component={Events} />
+      <Route exact path="/profile" component={Profile} />
     </Switch>)
 
 export default Routes

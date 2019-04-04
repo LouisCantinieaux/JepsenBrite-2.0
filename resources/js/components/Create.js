@@ -16,6 +16,7 @@ class Create extends Component {
     this.onChangeTitle=this.onChangeTitle.bind(this)
     this.handleOnChange=this.handleOnChange.bind(this)
     this.handleChangeDescription= this.handleChangeDescription.bind(this)
+    this.onChangeLocation= this.onChangeLocation.bind(this)
     this.onSubmit=this.onSubmit.bind(this)
     this.state = {
       title:"",
@@ -46,7 +47,9 @@ class Create extends Component {
       "location" : this.state.location,
       "image" : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
     }
+    console.log(obj)
     let response;
+    
     try {
       let request = Axios({
         method:'post',
@@ -111,9 +114,9 @@ class Create extends Component {
     })
   }
 
-  handleChangeLocation(e){
+  onChangeLocation(e){
     this.setState({
-      location : e
+      location : e.target.value
     })
   }
 

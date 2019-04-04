@@ -35,7 +35,7 @@ export default class CarouselAction extends Component {
         <Carousel.Item key={events.title}>
           <Link to="/event"><img
             className="carouselImg d-block w-100 ofc"
-            src="https://i.ytimg.com/vi/5iGE_wIDOTk/maxresdefault.jpg"
+            src={"data:image;base64,"+events.image}
             alt={events.title}
           />
           <Carousel.Caption>

@@ -50,7 +50,7 @@ export default class Register extends Component {
     const obj = {
       name: this.state.name,
       email: this.state.email,
-      password: ''
+      password: this.state.password
     }
     let response;
     try {

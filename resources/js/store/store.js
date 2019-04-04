@@ -27,7 +27,12 @@ export default class Provider extends Component {
             name:''
           })
           window.localStorage.clear();
-        }
+        },
+      refresh : async ()=>{ await Axios({
+        method:'post',
+        url : '/api/refresh',
+        headers: {'Content-Type': 'application/json' }
+      })}
     }
   }
   componentDidMount(){
