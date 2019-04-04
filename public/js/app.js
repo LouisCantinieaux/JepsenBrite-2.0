@@ -103475,10 +103475,12 @@ function (_Component) {
     key: "render",
     value: function render() {
       var events = this.props.events;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "text-center mt-4"
-      }, "Future events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row mx-auto"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "futurEvents pt-4 pb-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-center"
+      }, "Future events")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cards row mx-auto"
       }, events.map(function (events) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "col-md-4 mt-2",
@@ -103679,7 +103681,9 @@ function (_Component) {
         className: "descriptionTitle mt-5"
       }, "Event description:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
         className: "description mr-3"
-      }, this.state.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, null, "I want to participate"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
+      }, this.state.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        className: "participateBtn"
+      }, "I want to participate"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
         className: "mt-3"
       }, "Participants (5):"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "participants"
@@ -104764,6 +104768,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/store */ "./resources/js/store/store.js");
+/* harmony import */ var _layouts_logo_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../layouts/logo.png */ "./resources/js/layouts/logo.png");
+/* harmony import */ var _layouts_logo_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_layouts_logo_png__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -104781,6 +104787,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -104811,8 +104818,12 @@ function (_Component) {
         expand: "md",
         bg: "dark",
         variant: "dark",
-        className: "sticky-top"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "navBar sticky-top"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: _layouts_logo_png__WEBPACK_IMPORTED_MODULE_4___default.a,
+        height: "50px",
+        width: "50px"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "navbar-brand",
         to: "/"
       }, "JepsenBrite"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, {
@@ -105015,6 +105026,17 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ScrollToTop));
+
+/***/ }),
+
+/***/ "./resources/js/layouts/logo.png":
+/*!***************************************!*\
+  !*** ./resources/js/layouts/logo.png ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo.png?90eb4a2b8fb55c0722aade24ca6ba717";
 
 /***/ }),
 

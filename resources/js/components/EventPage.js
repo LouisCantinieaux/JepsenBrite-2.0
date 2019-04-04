@@ -54,7 +54,7 @@ export default class EventPage extends Component {
             {this.state.description}
           </p>
 
-          <Button>I want to participate</Button>
+          <Button className="participateBtn">I want to participate</Button>
 
           <h3 className="mt-3">Participants (5):</h3>
           <div className="participants">
