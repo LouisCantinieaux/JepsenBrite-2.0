@@ -30,6 +30,7 @@ export default class CarouselAction extends Component {
         activeIndex={index}
         direction={direction}
         onSelect={this.handleSelect}
+        className="carousel"
       >
       {events.map(events => (
         <Carousel.Item key={events.title}>

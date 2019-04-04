@@ -9736,7 +9736,7 @@ h3 {
 }
 
 .carouselImg {
-  height: 85vh;
+  height: 60vh;
 }
 
 .ofc {
@@ -10180,12 +10180,21 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .futurEvents {
-  background-color: darkred;
+  height: 10vh;
+  background-color: #4A4A49;
   color: white;
   border-top: black 8px solid;
   font-family: "Baloo Chettan", cursive;
 }
 
 .cards {
-  background-color: white;
+  background-color: #4A4A49;
+}
+
+.card-img-top {
+  height: 35vh;
+}
+
+#footer {
+  background-color: black !important;
 }

@@ -10,7 +10,7 @@ export default class EventCardHome extends Component {
         <div className="futurEvents pt-4 pb-3">
           <h2 className="text-center">Future events</h2>
         </div>
-        <div className="cards row mx-auto">
+        <div className="cards row mx-auto pb-4">
 
           {events.map(events => (
             <div className="col-md-4 mt-2" key={events.title}>
