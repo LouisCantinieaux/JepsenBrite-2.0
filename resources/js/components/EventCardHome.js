@@ -14,7 +14,7 @@ export default class EventCardHome extends Component {
           {events.map(events => (
             <div className="col-md-4 mt-2" key={events.title}>
               <div className="card text-center">
-                <Link to="/event">
+                <Link to={"/event-"+events.id}>
                   <img className="card-img-top ofc" src={"data:image;base64,"+events.image} alt={events.title} />
                 </Link>
                 <div className="card-body">

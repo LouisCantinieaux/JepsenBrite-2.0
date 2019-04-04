@@ -57,8 +57,6 @@ export default class Home extends Component {
       EventsCarousel:resCarous,
       EventsCards:resCard
     })
-    console.log(resCarous)
-    console.log(resCard)
 
   
   }

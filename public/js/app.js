@@ -103486,7 +103486,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card text-center"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/event"
+          to: "/event-" + events.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "card-img-top ofc",
           src: "data:image;base64," + events.image,
@@ -103540,11 +103540,21 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return EventPage; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/Button.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/Button.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -103565,86 +103575,145 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var EventPage =
 /*#__PURE__*/
 function (_Component) {
   _inherits(EventPage, _Component);
 
   function EventPage() {
+    var _this;
+
     _classCallCheck(this, EventPage);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(EventPage).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventPage).call(this));
+    _this.state = {
+      title: '',
+      description: '',
+      begin_time: '',
+      end_time: '',
+      location: '',
+      image: '',
+      participants: []
+    };
+    return _this;
   }
 
   _createClass(EventPage, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_3___default()({
+                  method: 'get',
+                  url: '/api/events/' + this.props.match.params.id,
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                });
+
+              case 2:
+                response = _context.sent;
+                this.setState({
+                  title: response.data.title,
+                  description: response.data.description,
+                  begin_time: response.data.begin_time,
+                  end_time: response.data.end_time,
+                  location: response.data.location,
+                  image: response.data.image,
+                  participants: response.data.participants
+                });
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "eventPage mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "coverImage"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "box6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://ds1.static.rtbf.be/image/media/object/default/16x9/1248x702/1/e/5/1e5bfc34bbdb4bd522525e5d65bfe5fc.jpg",
-        alt: ""
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: "data:image;base64," + this.state.image,
+        alt: this.state.title
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "box-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
         className: "title"
-      }, "F\xEAte \xE0 la saucisse"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, this.state.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
         className: "post"
-      }, "Jos\xE9 Legrand"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "Jos\xE9 Legrand"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "icon"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
         className: "date"
-      }, "20 Octobre 2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, this.state.begin_time)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
         className: "hours"
-      }, "De 8h30 \xE0 16h30")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.end_time)))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "eventContent mt-2 ml-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
         className: "eventTitle"
-      }, "[20 Oct. 19] F\xEAte \xE0 la saucisse"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, this.state.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
         className: "eventAuthor"
-      }, " By Jos\xE9 Legrand "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, " By Jos\xE9 Legrand "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
         className: "descriptionTitle mt-5"
-      }, "Event description:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "Event description:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
         className: "description mr-3"
-      }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lobortis orci sed nunc feugiat, eu feugiat neque tincidunt. Etiam vehicula non leo ut interdum. Donec fringilla enim ligula, in auctor enim viverra in. Phasellus dignissim varius eros ac commodo. Sed blandit turpis urna, non aliquam ipsum dapibus ac. Praesent at purus ac augue consequat pulvinar. Integer posuere fermentum magna nec semper. Sed condimentum consequat mi, in rhoncus sem elementum a. Duis porta urna sed massa consequat faucibus. Mauris libero lacus, dapibus sit amet ipsum ut, tempus rhoncus elit. Mauris vehicula ante eget ipsum egestas consequat. Donec eget nisi a lacus bibendum faucibus ac a libero. Cras egestas nibh ac sem fringilla, non sagittis nunc iaculis. Cras malesuada rutrum mauris, quis fermentum diam fringilla eget. In sodales pellentesque diam vitae tristique. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In quam odio, lacinia ac turpis a, sodales interdum lorem. Suspendisse eu viverra ex. Curabitur ac erat semper, varius est id, rutrum arcu. Nulla suscipit ultrices elit, fringilla porttitor ex. Suspendisse in nisl vel dolor ullamcorper condimentum sed eu nunc. Nam convallis efficitur ligula, nec luctus purus. Quisque aliquam interdum massa, ut laoreet metus vestibulum vitae. Phasellus eget sem finibus, aliquet augue ut, suscipit libero. Quisque non massa a ipsum convallis volutpat eu a ipsum. Nam fermentum porttitor ligula, nec semper nisi volutpat ac. Ut eget est et ligula luctus varius. Ut hendrerit ex in tincidunt auctor. Nunc tempus diam felis, ac pellentesque ipsum euismod at. Cras vitae nulla urna. Nam placerat mi nisl, condimentum accumsan ante varius non. Donec a ultrices est. Mauris metus lorem, blandit sed egestas quis, gravida sit amet justo. Phasellus consectetur tincidunt ante sed maximus. Sed luctus pharetra metus, eget porttitor arcu sagittis sit amet. Quisque rutrum metus vitae congue pharetra. Sed metus mi, convallis quis tellus et, porta placerat enim. Praesent viverra augue erat, sit amet viverra metus lacinia ac. Nunc vel auctor neque, sodales semper turpis. Nam purus justo, varius vitae mauris eget, sagittis fringilla lorem. Vivamus sit amet lorem tristique, lacinia sem et, commodo tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sagittis eros in nisi ullamcorper, non gravida nisl lacinia. Pellentesque diam eros, lobortis lacinia quam ut, mollis pharetra orci. Etiam dignissim ornare turpis, vel auctor lacus mattis id. Curabitur tincidunt odio purus, quis auctor quam malesuada ac. Sed facilisis mattis ornare. Cras et tortor euismod, tempus odio in, malesuada nisi. Ut vitae dignissim ligula, et facilisis lorem. Curabitur id augue est. Praesent semper sagittis mi, ac bibendum sapien pulvinar id. Nam non malesuada nisl. Nullam ut eleifend erat, eget ultrices libero. Quisque felis urna, pharetra eget urna ac, ultricies efficitur metus. Nullam id nulla purus. Nullam iaculis ex diam, id feugiat erat dictum sed. Suspendisse potenti. Nullam vitae nisl nisl. Nulla id nunc ut enim efficitur sodales. Sed rhoncus pretium arcu nec lacinia. Pellentesque tempus ipsum at magna scelerisque posuere. Pellentesque eu ex nisl. Aenean id orci non lorem ultricies maximus quis vitae diam. Integer scelerisque nisi et leo imperdiet eleifend. In efficitur dapibus leo, a placerat est hendrerit at. DONC VIEND\xC9 SIVOUPLAI !!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1___default.a, null, "I want to participate"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+      }, this.state.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, null, "I want to participate"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
         className: "mt-3"
-      }, "Participants (5):"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Participants (5):"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "participants"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "participant text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         className: "ofc rotate",
         src: "https://specials-images.forbesimg.com/imageserve/5c76b4b84bbe6f24ad99c370/416x416.jpg?background=000000&cropX1=0&cropX2=4000&cropY1=0&cropY2=4000"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Bill")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Bill")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "participant text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         className: "ofc rotate",
         src: "http://jactiv.ouest-france.fr/sites/default/files/imagecache/article-detail/images/2018/04/11/SI_6185723_1.jpg"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Ang\xE8le")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Ang\xE8le")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "participant text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         className: "ofc rotate",
         src: "https://www.ballecourbe.ca/wp-content/uploads/2015/10/jcv-960x540.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Jean-Claude")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Jean-Claude")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "participant text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         className: "ofc rotate",
         src: "https://www.nouvelordremondial.cc/wp-content/uploads/2018/07/durif-pas-mort.jpg"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Sylvain")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Sylvain")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "participant text-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         className: "ofc rotate",
         src: "https://basketswag.files.wordpress.com/2016/03/eddy-malou-generator.jpg?w=200"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Eddy")))));
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Eddy")))));
     }
   }]);
 
   return EventPage;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
 
@@ -103860,10 +103929,8 @@ function (_Component) {
                   EventsCarousel: resCarous,
                   EventsCards: resCard
                 });
-                console.log(resCarous);
-                console.log(resCard);
 
-              case 11:
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -104149,27 +104216,44 @@ function (_Component) {
       var _componentDidMount = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response, request;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // let request = Axios({
-                //   method:'get',
-                //   url : '/api/me',
-                //   headers: {'Content-Type': 'application/json' }
-                // });
-                // response = await request;
-                console.log(this.context.state.name);
+                _context.prev = 0;
+                request = axios__WEBPACK_IMPORTED_MODULE_3___default()({
+                  method: 'post',
+                  url: '/api/me',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + this.context.state.token
+                  }
+                });
+                _context.next = 4;
+                return request;
+
+              case 4:
+                response = _context.sent;
                 this.setState({
+                  name: response.data.name,
                   image: "https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png"
                 });
+                _context.next = 12;
+                break;
 
-              case 2:
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+                console.log(_context.t0.response);
+
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this);
+        }, _callee, this, [[0, 8]]);
       }));
 
       function componentDidMount() {
@@ -104852,7 +104936,7 @@ var Routes = function Routes() {
     component: _components_Create__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: "/event",
+    path: "/event-:id",
     component: _components_EventPage__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
@@ -104950,6 +105034,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -104975,6 +105061,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
+
 var Context = react__WEBPACK_IMPORTED_MODULE_1___default.a.createContext();
 var Consumer = Context.Consumer;
 
@@ -104993,17 +105080,54 @@ function (_Component) {
       loggedIn: false,
       token: "",
       name: '',
-      login: function login(tokenKey) {
-        _this.setState({
-          loggedIn: true,
-          token: tokenKey,
-          name: 'alex'
-        });
+      login: function () {
+        var _login = _asyncToGenerator(
+        /*#__PURE__*/
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(tokenKey) {
+          var request, response;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  request = axios__WEBPACK_IMPORTED_MODULE_2___default()({
+                    method: 'post',
+                    url: '/api/me',
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': 'Bearer ' + tokenKey
+                    }
+                  });
+                  _context.next = 3;
+                  return request;
 
-        window.localStorage.setItem("token", JSON.stringify(tokenKey));
-        window.localStorage.setItem("loggedIn", JSON.stringify(true));
-        window.localStorage.setItem('name', JSON.stringify('alex'));
-      },
+                case 3:
+                  response = _context.sent;
+
+                  _this.setState({
+                    loggedIn: true,
+                    token: tokenKey,
+                    id: response.data.id,
+                    name: response.data.name
+                  });
+
+                  window.localStorage.setItem("token", JSON.stringify(tokenKey));
+                  window.localStorage.setItem("loggedIn", JSON.stringify(true));
+                  window.localStorage.setItem('name', JSON.stringify('alex'));
+
+                case 8:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        function login(_x) {
+          return _login.apply(this, arguments);
+        }
+
+        return login;
+      }(),
       logout: function logout() {
         _this.setState({
           loggedIn: false,
@@ -105016,26 +105140,40 @@ function (_Component) {
       refresh: function () {
         var _refresh = _asyncToGenerator(
         /*#__PURE__*/
-        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+          var response;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
             while (1) {
-              switch (_context.prev = _context.next) {
+              switch (_context2.prev = _context2.next) {
                 case 0:
-                  _context.next = 2;
-                  return Axios({
+                  _context2.next = 2;
+                  return axios__WEBPACK_IMPORTED_MODULE_2___default()({
                     method: 'post',
                     url: '/api/refresh',
                     headers: {
-                      'Content-Type': 'application/json'
+                      'Content-Type': 'application/json',
+                      'Accept': 'application/json'
                     }
                   });
 
                 case 2:
+                  response = _context2.sent;
+                  _context2.next = 5;
+                  return request;
+
+                case 5:
+                  response = _context2.sent;
+
+                  _this.setState({
+                    token: response.data.token
+                  });
+
+                case 7:
                 case "end":
-                  return _context.stop();
+                  return _context2.stop();
               }
             }
-          }, _callee);
+          }, _callee2);
         }));
 
         function refresh() {
@@ -105051,8 +105189,8 @@ function (_Component) {
   _createClass(Provider, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.state.refresh;
       this.setState({
-        token: JSON.parse(window.localStorage.getItem('token')),
         loggedIn: JSON.parse(window.localStorage.getItem('loggedIn')),
         name: JSON.parse(window.localStorage.getItem('name'))
       });

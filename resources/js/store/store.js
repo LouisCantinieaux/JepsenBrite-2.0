@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Axios from 'axios'
 
 export const Context = React.createContext();
 
@@ -12,10 +13,18 @@ export default class Provider extends Component {
       loggedIn : false,
       token:"",
       name : '',
-      login: (tokenKey) =>{this.setState({ 
+      login: async (tokenKey) =>{
+        let request = Axios({
+          method:'post',
+          url : '/api/me',
+          headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+tokenKey}
+        });
+        let response = await request;
+        this.setState({ 
             loggedIn: true,
             token: tokenKey ,
-            name:'alex'
+            id: response.data.id,
+            name:response.data.name
           })
           window.localStorage.setItem("token" , JSON.stringify(tokenKey))
           window.localStorage.setItem("loggedIn", JSON.stringify(true))
@@ -28,20 +37,26 @@ export default class Provider extends Component {
           })
           window.localStorage.clear();
         },
-      refresh : async ()=>{ await Axios({
-        method:'post',
-        url : '/api/refresh',
-        headers: {'Content-Type': 'application/json' }
-      })}
+      refresh : async ()=>{ 
+        let response = await Axios({
+          method:'post',
+          url : '/api/refresh',
+          headers: {'Content-Type': 'application/json', 'Accept' : 'application/json' }
+        })
+        response = await request;
+        this.setState({
+          token: response.data.token
+        })
+    }
     }
   }
   componentDidMount(){
-
+    this.state.refresh
     this.setState({
-      token : JSON.parse(window.localStorage.getItem('token')),
       loggedIn : JSON.parse(window.localStorage.getItem('loggedIn')),
       name : JSON.parse(window.localStorage.getItem('name'))
     })
+    
   }
   componentDidUpdate(){
     this.state

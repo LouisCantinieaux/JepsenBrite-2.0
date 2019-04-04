@@ -11,16 +11,25 @@ export default class Profile extends Component {
     }
   }
   async componentDidMount(){
-    // let request = Axios({
-    //   method:'get',
-    //   url : '/api/me',
-    //   headers: {'Content-Type': 'application/json' }
-    // });
-    // response = await request;
-    console.log(this.context.state.name)
-    this.setState({
-      image : "https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png",
-    })
+    let response;
+    try {
+      let request = Axios({
+        method:'post',
+        url : '/api/me',
+        headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token}
+      });
+      response = await request;
+      this.setState({
+        name: response.data.name,
+        image : "https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png",
+      })
+    } catch(e) {
+      console.log(e);
+      console.log(e.response);
+    }
+    
+    
+    
   }
   componentDidUpdate(){
     this.context
