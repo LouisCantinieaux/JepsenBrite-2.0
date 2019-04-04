@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Baloo+Chettan);@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -9735,27 +9735,6 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-@-webkit-keyframes turn {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@keyframes turn {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
 .carouselImg {
   height: 85vh;
 }
@@ -9765,15 +9744,34 @@ h3 {
      object-fit: cover;
 }
 
+@-webkit-keyframes up {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+    -webkit-filter: drop-shadow(0px 0px 0px white);
+            filter: drop-shadow(0px 0px 0px white);
+  }
+}
+
+@keyframes up {
+  from {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+    -webkit-filter: drop-shadow(0px 0px 0px white);
+            filter: drop-shadow(0px 0px 0px white);
+  }
+}
 .rotate:hover {
-  -webkit-animation-name: turn;
-          animation-name: turn;
-  -webkit-animation-duration: 5s;
-          animation-duration: 5s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  -webkit-animation: up 0.1s linear forwards;
+          animation: up 0.1s linear forwards;
 }
 
 .container-card {
@@ -10153,4 +10151,41 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.participateBtn {
+  border-radius: 0px;
+  font-weight: bolder;
+  background-color: green;
+  border-color: transparent;
+}
+
+.participateBtn:hover {
+  background-color: darkgreen;
+  border-color: transparent;
+}
+
+.participateBtn:focus {
+  box-shadow: none;
+}
+
+.participateBtn:active {
+  background-color: darkgreen !important;
+  border-color: black !important;
+  box-shadow: none !important;
+}
+
+.navBar {
+  background-color: black !important;
+}
+
+.futurEvents {
+  background-color: darkred;
+  color: white;
+  border-top: black 8px solid;
+  font-family: "Baloo Chettan", cursive;
+}
+
+.cards {
+  background-color: white;
 }
