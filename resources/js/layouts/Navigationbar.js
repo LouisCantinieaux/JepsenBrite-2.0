@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {Provider, Context} from '../store/store'
+import logo from '../layouts/logo.png'
 
 class Navigationbar extends Component {
   constructor(context){
@@ -12,7 +13,8 @@ class Navigationbar extends Component {
   }
   render() {
     return (
-      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" className="sticky-top">
+      <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" className="navBar sticky-top">
+        <img src={logo} height="50px" width="50px"/>
         <Link className="navbar-brand" to="/">JepsenBrite</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 

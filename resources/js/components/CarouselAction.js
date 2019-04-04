@@ -35,7 +35,7 @@ export default class CarouselAction extends Component {
         <Carousel.Item key={events.title}>
           <Link to="/event"><img
             className="carouselImg d-block w-100 ofc"
-            src="https://i.ytimg.com/vi/5iGE_wIDOTk/maxresdefault.jpg"
+            src="https://cdn.vox-cdn.com/thumbor/DguuAZdbrvcEFg4BcSFazw6iESk=/0x0:1360x1021/1200x800/filters:focal(572x403:788x619)/cdn.vox-cdn.com/uploads/chorus_image/image/59621519/GettyImages_82770182.0.jpg"
             alt={events.title}
           />
           <Carousel.Caption>

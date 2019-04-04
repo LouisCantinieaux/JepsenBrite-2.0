@@ -1,6 +1,7 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
 
 // Variables
 @import 'variables';
@@ -14,15 +15,6 @@
 
 }
 
-@keyframes turn{
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  }
-}
-
 .carouselImg{
   height: 85vh;
 }
@@ -31,11 +23,18 @@
   object-fit: cover;
 }
 
+@keyframes up{
+  from{
+    transform: translateY(0);
+  }
+  to{
+    transform: translateY(-10px);
+    filter: drop-shadow(0px 0px 0px white);
+  }
+}
+
 .rotate:hover{
-  animation-name: turn;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  animation: up 0.1s linear forwards;
 }
 
 .container-card{
@@ -378,3 +377,40 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 // menu CSS
+
+.participateBtn{
+  border-radius: 0px;
+  font-weight: bolder;
+  background-color: green;
+  border-color: transparent;
+}
+
+.participateBtn:hover{
+  background-color: darkgreen;
+  border-color: transparent;
+}
+
+.participateBtn:focus{
+  box-shadow: none;
+}
+
+.participateBtn:active{
+  background-color: darkgreen!important;
+  border-color: black!important;
+  box-shadow: none!important;
+}
+
+.navBar{
+  background-color: black!important;
+}
+
+.futurEvents{
+  background-color: darkred;
+  color: white;
+  border-top: black 8px solid;
+  font-family: 'Baloo Chettan', cursive;
+}
+
+.cards{
+  background-color: white;
+}
