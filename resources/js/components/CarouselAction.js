@@ -22,32 +22,37 @@ export default class CarouselAction extends Component {
   }
 
   render() {
-    const { index, direction } = this.state;
-    const { events } = this.props
+const { index, direction } = this.state;
+const { events } = this.props
 
-    return (
-      <Carousel
-        activeIndex={index}
-        direction={direction}
-        onSelect={this.handleSelect}
-        className="carousel"
-      >
-      {events.map(events => (
-        <Carousel.Item key={events.title}>
-          <Link to="/event"><img
-            className="carouselImg d-block w-100 ofc"
-            src={"data:image;base64,"+events.image}
-            alt={events.title}
-          />
-          <Carousel.Caption>
-            
-          
-          </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-      ))}
-        
-      </Carousel>
+return (
+	<React.Fragment>
+		<Carousel
+		activeIndex={index}
+		direction={direction}
+		onSelect={this.handleSelect}
+		className="carousel"
+		>
+		{events.map(events => (
+		<Carousel.Item key={events.title}>
+		<div className="carouselMask">
+			<p className="carouselTitle text-center">{events.title}</p>
+	    </div>
+		  <Link to="/event"><img
+		    className="carouselImg d-block w-100 ofc"
+		    src={"data:image;base64,"+events.image}
+		    alt={events.title}
+		  />
+		  <Carousel.Caption>
+		    
+		  
+		  </Carousel.Caption>
+		  </Link>
+		</Carousel.Item>
+		))}
+
+		</Carousel>
+	</React.Fragment>
     );
   }
 }

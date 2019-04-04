@@ -103081,7 +103081,7 @@ function (_Component) {
           index = _this$state.index,
           direction = _this$state.direction;
       var events = this.props.events;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a, {
         activeIndex: index,
         direction: direction,
         onSelect: this.handleSelect,
@@ -103089,14 +103089,18 @@ function (_Component) {
       }, events.map(function (events) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a.Item, {
           key: events.title
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "carouselMask"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "carouselTitle text-center"
+        }, events.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/event"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "carouselImg d-block w-100 ofc",
           src: "data:image;base64," + events.image,
           alt: events.title
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a.Caption, null)));
-      }));
+      })));
     }
   }]);
 
