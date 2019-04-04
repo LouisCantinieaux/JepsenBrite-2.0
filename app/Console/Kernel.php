@@ -24,8 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+            $reminders = \App\Participation::where('reminded', 'false')
+                ->where('reminder_date', '<', 'NOW()');
+            \Log::info($reminders->get());
+            $reminders->update(['reminded' => 'true']);
+        })->everyMinute();
     }
 
     /**
