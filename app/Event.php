@@ -44,4 +44,5 @@ class Event extends Model
         # code...
         return $this->belongsToMany('App\User', 'participations');
     }
+    
 }
