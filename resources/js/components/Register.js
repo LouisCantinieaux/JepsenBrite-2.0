@@ -54,7 +54,6 @@ export default class Register extends Component {
     }
     let response;
     try {
-      console.log('ca marche ...')
       //console.log(obj)
       let request = Axios({
         method: 'post',
@@ -62,11 +61,8 @@ export default class Register extends Component {
         config: { headers: { 'Content-Type': 'application/json' } },
         data: obj
       });
-      console.log(request);
       response = await request;
-      console.log('oui')
     } catch (e) {
-      console.log('... ou pas')
       console.log(e.response);
     }
     (response) => { console.log(response) }

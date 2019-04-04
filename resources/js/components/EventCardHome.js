@@ -23,7 +23,7 @@ export default class EventCardHome extends Component {
                   <hr />
                   <p>
                     <a className="btn btn-primary" data-toggle="collapse" href={"#collapse" + events.id} role="button" aria-expanded="false" aria-controls={"collapse" + events.id}>
-                      <i className="fas fa-map"></i> Maps
+                      <i className="fa fa-map"></i> Maps
                 </a>
                   </p>
                   <div className="collapse" id={"collapse" + events.id}>

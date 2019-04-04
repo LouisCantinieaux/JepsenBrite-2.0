@@ -47,8 +47,7 @@ export default class Home extends Component {
         "end_time" : "2019-03-28 07:29:54",
         "location" : "Rue de Mulhouse, 36 - 4000, Liège",
         "image" : "azeaze"
-      }],
-      Users:[]
+      }]
     }
     
   }

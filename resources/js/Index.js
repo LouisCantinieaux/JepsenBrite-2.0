@@ -4,10 +4,13 @@ import Layout from './layouts/Layout';
 import { BrowserRouter} from 'react-router-dom';
 
 import Provider from './store/store'
+import ScrollToTop from './layouts/ScrollToTop'
 
 ReactDOM.render(
     <Provider>
         <BrowserRouter>
-            <Layout />
+            <ScrollToTop>
+                <Layout />
+            </ScrollToTop>
         </BrowserRouter>
     </Provider>, document.getElementById('app'));
