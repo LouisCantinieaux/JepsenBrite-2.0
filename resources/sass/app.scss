@@ -446,3 +446,21 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background-color: rgba(0,0,0,0.3);
   padding-bottom: 20vh;
 }
+
+.mapsBtn{
+  background-color: white;
+  color: black;
+  border-color: black;
+  font-weight: bolder;
+}
+
+.mapsBtn:hover,.mapsBtn:focus, .mapsBtn:active{
+  color: black!important;
+  border-color: black!important;
+  background-color: white!important;
+  box-shadow: none!important;
+}
+
+.mapsBtn:hover{
+  text-shadow: 0px 0px 2px lightblue!important;
+}
