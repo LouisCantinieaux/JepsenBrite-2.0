@@ -9735,8 +9735,16 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.carouselImg {
+.navBar {
+  height: 6vh;
+}
+
+.carouselImg, .carousel {
   height: 60vh;
+}
+
+.carousel-indicators {
+  display: none;
 }
 
 .ofc {
@@ -10199,9 +10207,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .carouselMask {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   position: absolute;
   top: 0;
-  height: 80vh;
+  height: 60vh;
   width: 100%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.4);
@@ -10212,12 +10224,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .carouselTitle {
-  font-size: 250%;
+  font-size: 150%;
   color: white;
-  margin-top: 48vh;
   font-family: "Quattrocento Sans", sans-serif;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding-bottom: 20vh;
 }
 
 .mapsBtn {
@@ -10235,5 +10244,5 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .mapsBtn:hover {
-  text-shadow: 0px 0px 2px lightblue !important;
+  text-shadow: 0px 0px 2px #009BFF !important;
 }
