@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Baloo+Chettan);@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Baloo+Chettan);@import url(https://fonts.googleapis.com/css?family=Quattrocento+Sans);@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);@charset "UTF-8";
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -10181,14 +10181,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .futurEvents {
   height: 10vh;
-  background-color: #4A4A49;
-  color: white;
+  background-color: white;
   border-top: black 8px solid;
   font-family: "Baloo Chettan", cursive;
 }
 
 .cards {
-  background-color: #4A4A49;
+  background-color: white;
 }
 
 .card-img-top {
@@ -10197,4 +10196,26 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 #footer {
   background-color: black !important;
+}
+
+.carouselMask {
+  position: absolute;
+  top: 0;
+  height: 80vh;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carouselTitle {
+  font-size: 250%;
+  color: white;
+  margin-top: 48vh;
+  font-family: "Quattrocento Sans", sans-serif;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-bottom: 20vh;
 }
