@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
                 ->where('reminder_date', '<', 'NOW()');
             \Log::info($reminders->get());
             $reminders->update(['reminded' => 'true']);
-        })->everyMinute();
+        })->hourlyAt(18);
     }
 
     /**
