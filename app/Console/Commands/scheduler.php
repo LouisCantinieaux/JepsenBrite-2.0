@@ -41,6 +41,7 @@ class scheduler extends Command
         while (true) {
             $this->line('Calling scheduler');
             $this->call('schedule:run');
+            $this->line('Done with scheduled work');
             sleep(60);
         }
     }
