@@ -103173,13 +103173,13 @@ function (_Component) {
       }, events.map(function (events) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a.Item, {
           key: events.title
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/event"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "carouselMask"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "carouselTitle text-center"
-        }, events.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/event"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, events.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "carouselImg d-block w-100 ofc",
           src: "data:image;base64," + events.image,
           alt: events.title
@@ -103885,15 +103885,25 @@ function (_Component) {
       var _componentDidMount = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var result;
+        var dateNow, result;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                dateNow = function _ref(date) {
+                  var day = date.getDate();
+                  var month = date.getMonth() + 1;
+                  var year = date.getFullYear();
+                  var hours = date.getHours();
+                  var min = date.getMinutes();
+                  var sec = date.getSeconds();
+                  return year + '-' + (month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + '%20' + (hours < 10 ? "0" + hours : hours) + '%3' + (min < 10 ? "0" + min : min) + '%3' + (sec < 10 ? "0" + sec : sec);
+                };
+
+                _context.next = 3;
                 return axios({
                   method: 'get',
-                  url: '/api/events',
+                  url: '/api/events?from=' + dateNow(new Date()),
                   config: {
                     headers: {
                       'Content-Type': 'application/json'
@@ -103901,13 +103911,13 @@ function (_Component) {
                   }
                 });
 
-              case 2:
+              case 3:
                 result = _context.sent;
                 this.setState({
                   events: result.data
                 });
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
