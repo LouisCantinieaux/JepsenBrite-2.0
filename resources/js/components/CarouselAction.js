@@ -35,6 +35,7 @@ return (
 		>
 		{events.map(events => (
 		<Carousel.Item key={events.title}>
+<<<<<<< HEAD
 		<div className="carouselMask">
 			<p className="carouselTitle text-center">{events.title}</p>
 			<p className="carouselTitle text-center">{events.begin_time}</p>
@@ -45,6 +46,22 @@ return (
 		    alt={events.title}
 		  />
 		  </Link>
+=======
+		<Link to="/event">
+				<div className="carouselMask">
+					<p className="carouselTitle text-center">{events.title}</p>
+				</div>
+				<img
+					className="carouselImg d-block w-100 ofc"
+					src={"data:image;base64,"+events.image}
+					alt={events.title}
+				/>
+				<Carousel.Caption>
+					
+				
+				</Carousel.Caption>
+			</Link>
+>>>>>>> 7d1a67e1919f41e1bade9c9d0f7a604ff3cc79d1
 		</Carousel.Item>
 		))}
 
