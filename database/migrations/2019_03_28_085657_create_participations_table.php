@@ -19,7 +19,8 @@ class CreateParticipationsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->uuid('event_id');
             $table->foreign('event_id')->references('id')->on('events');
-            $table->dateTime('reminder_date');          
+            $table->dateTime('reminder_date');
+            $table->boolean('reminded');     
             $table->timestamps();
             $table->unique(["user_id","event_id"]);
         });
