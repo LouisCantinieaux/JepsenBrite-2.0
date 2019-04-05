@@ -48,10 +48,9 @@ export default class Home extends Component {
     
       return array;
     }
-    let resCarous = response.data
-    shuffle(resCarous)
+
     this.setState({
-      EventsCarousel:resCarous.slice(0,3),
+      EventsCarousel:shuffle(response.data.slice(0,3)),
       EventsCards:response.data.slice(0,6)
     })
 

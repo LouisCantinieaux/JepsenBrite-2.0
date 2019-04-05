@@ -103174,7 +103174,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a.Item, {
           key: events.title
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/event"
+          to: "/event-" + events.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "carouselMask"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -104018,7 +104018,7 @@ function (_Component) {
       var _componentDidMount = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var dateNow, response, shuffle, resCarous;
+        var dateNow, response, shuffle;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -104061,14 +104061,12 @@ function (_Component) {
 
               case 4:
                 response = _context.sent;
-                resCarous = response.data;
-                shuffle(resCarous);
                 this.setState({
-                  EventsCarousel: resCarous.slice(0, 3),
+                  EventsCarousel: shuffle(response.data.slice(0, 3)),
                   EventsCards: response.data.slice(0, 6)
                 });
 
-              case 8:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -104979,18 +104977,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "nav-link",
         to: "/events"
-      }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], {
-        title: "Dropdown",
-        id: "collasible-nav-dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.1"
-      }, "Action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.2"
-      }, "Another action"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.3"
-      }, "Something"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, {
-        href: "#action/3.4"
-      }, "Separated link"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_store_store__WEBPACK_IMPORTED_MODULE_3__["Context"].Consumer, null, function (context) {
+      }, "Events")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_store_store__WEBPACK_IMPORTED_MODULE_3__["Context"].Consumer, null, function (context) {
         return function () {
           switch (context.state.loggedIn) {
             case false:

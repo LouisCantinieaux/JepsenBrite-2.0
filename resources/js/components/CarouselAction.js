@@ -35,7 +35,7 @@ return (
 		>
 		{events.map(events => (
 		<Carousel.Item key={events.title}>
-		<Link to="/event">
+		<Link to={"/event-"+events.id}>
 				<div className="carouselMask">
 					<p className="carouselTitle text-center">{events.title}</p>
 				</div>
