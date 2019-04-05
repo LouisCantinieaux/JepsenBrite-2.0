@@ -28,9 +28,7 @@ export default class Home extends Component {
       method:'get',
       url : '/api/events?from='+dateNow(new Date),
       headers: {'Content-Type': 'application/json' }
-    })
-    let resCarous=response.data.slice(0,3)
-    let resCard = response.data.slice(0,6)
+    }) 
 
     function shuffle(array) {
       var m = array.length, t, i;
@@ -50,12 +48,11 @@ export default class Home extends Component {
     
       return array;
     }
-
+    let resCarous = response.data
     shuffle(resCarous)
-
     this.setState({
-      EventsCarousel:resCarous,
-      EventsCards:resCard
+      EventsCarousel:resCarous.slice(0,3),
+      EventsCards:response.data.slice(0,6)
     })
 
   
