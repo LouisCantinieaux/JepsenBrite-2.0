@@ -2,6 +2,8 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
+
 
 // Variables
 @import 'variables';
@@ -406,14 +408,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .futurEvents{
   height: 10vh;
-  background-color: #4A4A49;
-  color: white;
+  background-color: white;
   border-top: black 8px solid;
   font-family: 'Baloo Chettan', cursive;
 }
 
 .cards{
-  background-color: #4A4A49;
+  background-color: white;
 }
 
 .card-img-top{
@@ -438,7 +439,10 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .carouselTitle{
-  background-color: rgba(0,0,0,0.3);
-  font-size: 300%;
+  font-size: 250%;
   color: white;
+  margin-top: 48vh;
+  font-family: 'Quattrocento Sans', sans-serif;
+  background-color: rgba(0,0,0,0.3);
+  padding-bottom: 20vh;
 }
