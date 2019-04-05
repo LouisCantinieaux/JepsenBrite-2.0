@@ -23,7 +23,7 @@ Route::get('events', 'EventController@showAll');
 Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::get('me', 'AuthController@me');
 
     Route::post('events', 'EventController@create');
     Route::post('events/{event}/register', 'ParticipationController@create');

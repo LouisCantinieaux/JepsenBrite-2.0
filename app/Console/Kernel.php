@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Reminder;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -25,11 +28,18 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $reminders = \App\Participation::where('reminded', 'false')
+            $participations = \App\Participation::with(['event', 'user'])->where('reminded', 'false')
                 ->where('reminder_date', '<', 'NOW()');
-            \Log::info($reminders->get());
-            $reminders->update(['reminded' => 'true']);
-        })->hourlyAt(18);
+
+            $reminders = $participations->get();
+            \Log::info($reminders);
+            foreach ($reminders as $reminder) {
+                \Log::info($reminder['user']['email']);
+                $mail = new Reminder($reminder['event']);
+                Mail::to($reminder['user']['email'])->send($mail);
+            }
+            $participations->update(['reminded' => 'true']);
+        })->everyMinute();
     }
 
     /**

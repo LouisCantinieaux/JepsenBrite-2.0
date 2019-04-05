@@ -31,4 +31,13 @@ class Participation extends Model
         'reminder_date' => 'datetime',
     ];
 
+    public function event()
+    {
+        return $this->belongsTo('App\Event', 'event_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 }
