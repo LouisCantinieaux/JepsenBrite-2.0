@@ -8,13 +8,13 @@ export default class Events extends Component {
     }
   }
   async componentDidMount(){
-    await axios({
+    let result = await axios({
           method:'get',
           url : '/api/events',
           config: { headers: {'Content-Type': 'application/json' }}
         })
     this.setState({
-      events: result
+      events: result.data
     })
   }
   render() {
