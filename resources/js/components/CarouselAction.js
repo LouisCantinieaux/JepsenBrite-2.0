@@ -37,16 +37,13 @@ return (
 		<Carousel.Item key={events.title}>
 		<div className="carouselMask">
 			<p className="carouselTitle text-center">{events.title}</p>
+			<p className="carouselTitle text-center">{events.begin_time}</p>
 	    </div>
 		  <Link to="/event"><img
 		    className="carouselImg d-block w-100 ofc"
 		    src={"data:image;base64,"+events.image}
 		    alt={events.title}
 		  />
-		  <Carousel.Caption>
-		    
-		  
-		  </Carousel.Caption>
 		  </Link>
 		</Carousel.Item>
 		))}

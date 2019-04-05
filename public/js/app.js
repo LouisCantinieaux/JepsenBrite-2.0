@@ -103177,13 +103177,15 @@ function (_Component) {
           className: "carouselMask"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "carouselTitle text-center"
-        }, events.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        }, events.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "carouselTitle text-center"
+        }, events.begin_time)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           to: "/event"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "carouselImg d-block w-100 ofc",
           src: "data:image;base64," + events.image,
           alt: events.title
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a.Caption, null)));
+        })));
       })));
     }
   }]);
