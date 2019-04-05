@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Axios from 'axios'
+import ReactMarkdown from 'react-markdown'
 
 export default class EventPage extends Component {
   constructor(){
@@ -54,9 +55,7 @@ export default class EventPage extends Component {
         <div className="eventContent mt-2 ml-3">
           <p className="eventTitle">{this.state.title}</p><span className="eventAuthor" > By José Legrand </span>
           <h2 className="descriptionTitle mt-5">Event description:</h2>
-          <p className="description mr-3">
-            {this.state.description}
-          </p>
+          <ReactMarkdown source={this.state.description}/>
 
           <Button className="participateBtn">I want to participate</Button>
 
