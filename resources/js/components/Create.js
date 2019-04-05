@@ -1,6 +1,8 @@
 import 'flatpickr/dist/themes/material_blue.css'
 import "easymde/dist/easymde.min.css";
 
+import { French } from "flatpickr/dist/l10n/fr.js"
+
 import React, { Component } from 'react'
 import {Form, Container} from 'react-bootstrap'
 import Flatpickr from 'react-flatpickr'
@@ -161,6 +163,8 @@ class Create extends Component {
           options={{
             altInput: true,
             time_24hr: true,
+            locale: French,
+            altFormat: "D j F Y H:i",
             minDate: "today"
           }}
           onChange={e => this.handleOnChange(e, "start")}
@@ -175,6 +179,8 @@ class Create extends Component {
           options={{
             altInput: true,
             minDate:this.state.start,
+            locale: French,
+            altFormat: "D j F Y H:i",
             time_24hr: true
           }}
           onChange={e => this.handleOnChange(e, "end")}
