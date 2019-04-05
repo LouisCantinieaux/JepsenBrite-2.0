@@ -31,6 +31,10 @@ export default class EventPage extends Component {
       participants: response.data.participants
     })
   }
+
+  participate(){
+    
+  }
   render() {
     return (
       <div className="eventPage mt-3">

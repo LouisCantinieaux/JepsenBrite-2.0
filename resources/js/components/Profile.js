@@ -10,29 +10,35 @@ export default class Profile extends Component {
       name: ''
     }
   }
-  async componentDidMount(){
-    let response;
-    try {
-      let request = Axios({
-        method:'post',
-        url : '/api/me',
-        headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token}
-      });
-      response = await request;
-      this.setState({
-        name: response.data.name,
-        image : "https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png",
-      })
-    } catch(e) {
-      console.log(e);
-      console.log(e.response);
+
+  async getProfile(){
+    if (!this.state.name){
+      let response;
+      try {
+        let request = Axios({
+          method:'post',
+          url : '/api/me',
+          headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token}
+        });
+        response = await request;
+        this.setState({
+          name: response.data.name,
+          image : "https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png",
+        })
+      } catch(e) {
+        console.log(e);
+        console.log(e.response);
+      }
     }
+  }
+  componentDidMount(){
+    this.getProfile()
     
     
     
   }
   componentDidUpdate(){
-    this.context
+    this.getProfile()
   }
 
   render() {

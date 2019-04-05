@@ -26,9 +26,9 @@ export default class Provider extends Component {
             id: response.data.id,
             name:response.data.name
           })
-          window.localStorage.setItem("token" , JSON.stringify(tokenKey))
-          window.localStorage.setItem("loggedIn", JSON.stringify(true))
-          window.localStorage.setItem('name', JSON.stringify('alex'))
+          window.localStorage.setItem("token" , tokenKey)
+          window.localStorage.setItem("loggedIn", this.state.loggedIn)
+          window.localStorage.setItem('name', this.state.name)
         },
       logout : () =>{this.setState({
             loggedIn : false,
@@ -37,24 +37,30 @@ export default class Provider extends Component {
           })
           window.localStorage.clear();
         },
-      refresh : async ()=>{ 
-        let response = await Axios({
-          method:'post',
-          url : '/api/refresh',
-          headers: {'Content-Type': 'application/json', 'Accept' : 'application/json' }
-        })
-        response = await request;
-        this.setState({
-          token: response.data.token
-        })
+      refresh : async (token)=>{ 
+        console.log(token)
+        let response;
+        try {
+          response = await Axios({
+            method:'post',
+            url : '/api/refresh',
+            headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+token }
+          })
+          this.setState({
+            token: response.data.token
+          })
+        } catch(e) {console.log(e.response);}
+
+        // response = await request;
+
     }
     }
   }
   componentDidMount(){
-    this.state.refresh
     this.setState({
+      token : window.localStorage.getItem('token'),
       loggedIn : JSON.parse(window.localStorage.getItem('loggedIn')),
-      name : JSON.parse(window.localStorage.getItem('name'))
+      name : window.localStorage.getItem('name')
     })
     
   }
