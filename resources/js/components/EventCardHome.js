@@ -22,8 +22,8 @@ export default class EventCardHome extends Component {
                   <h5 className="card-title">{events.title}</h5>
                   <hr />
                   <p>
-                    <a className="btn btn-primary" data-toggle="collapse" href={"#collapse" + events.id} role="button" aria-expanded="false" aria-controls={"collapse" + events.id}>
-                      <i className="fa fa-map"></i> Maps
+                    <a className="mapsBtn btn btn-primary" data-toggle="collapse" href={"#collapse" + events.id} role="button" aria-expanded="false" aria-controls={"collapse" + events.id}>
+                      <i className="fa fa-map"></i> {events.location}
                 </a>
                   </p>
                   <div className="collapse" id={"collapse" + events.id}>
