@@ -104064,8 +104064,8 @@ function (_Component) {
               case 4:
                 response = _context.sent;
                 this.setState({
-                  EventsCarousel: shuffle(response.data.slice(0, 3)),
-                  EventsCards: response.data.slice(0, 6)
+                  EventsCards: response.data.slice(0, 6),
+                  EventsCarousel: shuffle(response.data).slice(0, 3)
                 });
 
               case 6:
