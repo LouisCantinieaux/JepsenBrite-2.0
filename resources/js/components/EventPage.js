@@ -37,7 +37,7 @@ export default class EventPage extends Component {
   }
   render() {
     return (
-      <div className="eventPage mt-3">
+      <div className="eventPage mt-3 mb-5">
         <div className="coverImage">
           <div className="box6">
               <img src={"data:image;base64,"+this.state.image} alt={this.state.title}/>
