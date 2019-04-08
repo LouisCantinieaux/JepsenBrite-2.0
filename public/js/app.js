@@ -103174,7 +103174,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Carousel__WEBPACK_IMPORTED_MODULE_1___default.a.Item, {
           key: events.title
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/event-" + events.id
+          to: "/event/" + events.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "carouselMask"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -103401,6 +103401,7 @@ function (_Component) {
             state[from] = e[0];
           }
 
+          console.log(this.state.end);
           break;
 
         default:
@@ -103612,14 +103613,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card card-body"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
-          src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11880.492291371422!2d12.4922309!3d41.8902102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1524815927977",
-          width: "100%",
-          height: "200",
-          frameBorder: "0",
-          style: {
-            border: 0
-          },
-          allowFullScreen: true
+          src: "test"
         }))))));
       })));
     }
@@ -103650,6 +103644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'react-markdown'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -103673,6 +103668,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -103782,9 +103778,9 @@ function (_Component) {
         className: "eventAuthor"
       }, " By Jos\xE9 Legrand "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
         className: "descriptionTitle mt-5"
-      }, "Event description:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "description mr-3"
-      }, this.state.description), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, "Event description:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(!(function webpackMissingModule() { var e = new Error("Cannot find module 'react-markdown'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {
+        source: this.state.description
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
         className: "participateBtn"
       }, "I want to participate"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
         className: "mt-3"
@@ -104066,8 +104062,8 @@ function (_Component) {
               case 4:
                 response = _context.sent;
                 this.setState({
-                  EventsCarousel: shuffle(response.data.slice(0, 3)),
-                  EventsCards: response.data.slice(0, 6)
+                  EventsCards: response.data.slice(0, 6),
+                  EventsCarousel: shuffle(response.data).slice(0, 3)
                 });
 
               case 6:
@@ -105082,7 +105078,7 @@ var Routes = function Routes() {
     component: _components_Create__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: "/event-:id",
+    path: "/event/:id",
     component: _components_EventPage__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,

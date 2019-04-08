@@ -104,6 +104,7 @@ class Create extends Component {
         } else {
           state[from] = e[0];
         }
+        console.log(this.state.end)
         break;
       default:
     }

@@ -50,8 +50,8 @@ export default class Home extends Component {
     }
 
     this.setState({
-      EventsCarousel:shuffle(response.data.slice(0,3)),
-      EventsCards:response.data.slice(0,6)
+      EventsCards:response.data.slice(0,6),
+      EventsCarousel:(shuffle(response.data)).slice(0,3)
     })
 
   
