@@ -17,7 +17,7 @@ export default class EventCardHome extends Component {
           {events.map(events => (
             <div className="col-md-4 mt-2" key={events.title}>
               <div className="card text-center mt-5">
-                <Link to={"/event-"+events.id}>
+                <Link to={"/event/"+events.id}>
                   <img className="card-img-top ofc" src={"data:image;base64,"+events.image} alt={events.title} />
                 </Link>
                 <div className="card-body">
@@ -38,7 +38,7 @@ export default class EventCardHome extends Component {
               </div>
             </div>
               ))}
-
+          <Link to="/events" className="viewMore mx-auto mt-5">View more events</Link>
         </div>
 
       </React.Fragment>
