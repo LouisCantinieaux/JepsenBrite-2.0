@@ -26,16 +26,16 @@ export default class Provider extends Component {
             id: response.data.id,
             name:response.data.name
           })
-          window.localStorage.setItem("token" , tokenKey)
-          window.localStorage.setItem("loggedIn", this.state.loggedIn)
-          window.localStorage.setItem('name', this.state.name)
+          window.sessionStorage.setItem("token" , tokenKey)
+          window.sessionStorage.setItem("loggedIn", this.state.loggedIn)
+          window.sessionStorage.setItem('name', this.state.name)
         },
       logout : () =>{this.setState({
             loggedIn : false,
             token: '',
             name:''
           })
-          window.localStorage.clear();
+          window.sessionStorage.clear();
         },
       refresh : async (token)=>{ 
         console.log(token)
@@ -58,9 +58,9 @@ export default class Provider extends Component {
   }
   componentDidMount(){
     this.setState({
-      token : window.localStorage.getItem('token'),
-      loggedIn : JSON.parse(window.localStorage.getItem('loggedIn')),
-      name : window.localStorage.getItem('name')
+      token : window.sessionStorage.getItem('token'),
+      loggedIn : JSON.parse(window.sessionStorage.getItem('loggedIn')),
+      name : window.sessionStorage.getItem('name')
     })
     
   }
