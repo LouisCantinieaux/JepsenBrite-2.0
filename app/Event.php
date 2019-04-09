@@ -29,6 +29,7 @@ class Event extends Model
         'end_time' => 'datetimetz'
     ];
 
+
     /**
      * Indicates if the IDs are auto-incrementing.
      *

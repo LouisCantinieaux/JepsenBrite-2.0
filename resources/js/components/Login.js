@@ -43,8 +43,9 @@ class Login extends Component {
           data : obj
         });
         response = await request;
+        console.log('login success', response)
     } catch(e) {
-      console.log(e.response);
+      console.log('login error', e.response);
     }
     (response) => { console.log(response) }
     this.context.state.login(response.data.access_token)

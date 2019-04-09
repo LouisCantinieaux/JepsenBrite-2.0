@@ -65,6 +65,7 @@ class EventController extends Controller
     {
         $max = 20;
         $events = Event::orderBy('end_time')->orderBy('begin_time');
+        return response()->json(Event::all(), 200);
         if($from = $request->input('from', false)){
             $events->where('end_time', '>=', $from);
         }

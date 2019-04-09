@@ -15,7 +15,7 @@ export default class Provider extends Component {
       name : '',
       login: async (tokenKey) =>{
         let request = Axios({
-          method:'post',
+          method:'get',
           url : '/api/me',
           headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+tokenKey}
         });

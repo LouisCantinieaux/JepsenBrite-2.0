@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Axios from 'axios'
 import ReactMarkdown from 'react-markdown'
+import {Provider, Context} from '../store/store'
+import { request } from 'http';
 
 export default class EventPage extends Component {
-  constructor(){
-    super()
+  constructor(context){
+    super(context)
+    this.participate=this.participate.bind(this)
     this.state={
       title: '',
       description:'',
@@ -13,7 +16,8 @@ export default class EventPage extends Component {
       end_time : '',
       location : '',
       image : '',
-      participants: []
+      participants: [],
+      participation:false
     }
   }
   async componentDidMount(){
@@ -33,8 +37,40 @@ export default class EventPage extends Component {
     })
   }
 
-  participate(){
-    
+  async participate(){
+    // let date_reminder = new Date(this.state.begin_time.substring(0,19))
+    function dateReminder(date){
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+
+      var hours = date.getHours()+2;
+      var min = date.getMinutes();
+      var sec = date.getSeconds();
+
+      return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + ' ' + (hours < 10 ? "0" + hours : hours) +':'+ (min < 10 ? "0" + min : min)+ ':' + (sec < 10 ? "0" + sec : sec)
+    }
+    console.log (this.state.begin_time)
+    console.log(dateReminder(new Date(this.state.begin_time.substring(0,19))))
+    const obj = {
+      reminder_date : dateReminder(new Date(this.state.begin_time.substring(0,19)))
+    }
+    console.log(obj);
+    let axiosConfig = {
+      method:'post',
+      url : '/api/events/'+this.props.match.params.id+'/register',
+      
+      headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token },
+      data:obj
+    };
+    console.log(axiosConfig)
+    let request = Axios(axiosConfig);
+    console.log(request);
+    let response = await request;
+    console.log(response)
+    this.setState({
+      participation:true
+    })
   }
   render() {
     return (
@@ -57,7 +93,7 @@ export default class EventPage extends Component {
           <h2 className="descriptionTitle mt-5">Event description:</h2>
           <ReactMarkdown source={this.state.description}/>
 
-          <Button className="participateBtn">I want to participate</Button>
+          {((this.state.participation === false) ? <a href="javascript:void(0)" onClick={this.participate}><Button className="participateBtn">I want to participate</Button></a> : <Button className="btn-danger">Finally I won't come</Button>)}
 
           <h3 className="mt-3">Participants (5):</h3>
           <div className="participants">
@@ -87,3 +123,5 @@ export default class EventPage extends Component {
     )
   }
 }
+
+EventPage.contextType = Context

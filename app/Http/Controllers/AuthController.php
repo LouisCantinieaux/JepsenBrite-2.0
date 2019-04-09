@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Auth\RegisterController;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Registered;
 
 class AuthController extends Controller
 {
@@ -48,7 +50,7 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Couldn\'t register user.'], 500);
         }
-
+        // Mail::to($credentials['email'])->send(new Registered());
         return $this->respondWithToken($token);
     }
 
