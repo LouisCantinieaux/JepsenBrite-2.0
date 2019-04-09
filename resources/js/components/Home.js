@@ -24,6 +24,7 @@ export default class Home extends Component {
 
       return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + '%20' + (hours < 10 ? "0" + hours : hours) +'%3'+ (min < 10 ? "0" + min : min)+ '%3' + (sec < 10 ? "0" + sec : sec)
     }
+
     let response = await Axios({
       method:'get',
       url : '/api/events?from='+dateNow(new Date),
@@ -53,8 +54,6 @@ export default class Home extends Component {
       EventsCards:response.data.slice(0,6),
       EventsCarousel:(shuffle(response.data)).slice(0,3)
     })
-
-  
   }
 
   render() {

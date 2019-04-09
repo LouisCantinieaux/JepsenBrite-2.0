@@ -28,7 +28,7 @@ export default class EditProfile extends Component {
         response = await request;
         this.setState({
           pseudo: response.data.name,
-          image : response.data.image ,
+          image : response.data.avatar ,
         })
       } catch(e) {
         console.log(e);
@@ -48,15 +48,15 @@ export default class EditProfile extends Component {
 
     const obj={
       "name" : this.state.pseudo,
-      "avata" : this.state.image.substr(this.state.image.indexOf(',') + 1)
+      "avatar" : this.state.image.substr(this.state.image.indexOf(',') + 1)
     }
     console.log(obj)
     let response;
     
     try {
       let request = Axios({
-        method:'post',
-        url : '/api/events',
+        method:'patch',
+        url : '/api/me',
         config: { },
         headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token},
         data : obj
