@@ -40,32 +40,43 @@ class Create extends Component {
 
   async onSubmit(data){
     data.preventDefault();
+    function dateFormatting(date){
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
 
+      var hours = date.getHours();
+      var min = date.getMinutes();
+      var sec = date.getSeconds();
+
+      return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + ' ' + (hours < 10 ? "0" + hours : hours) +':'+ (min < 10 ? "0" + min : min)+ ':' + (sec < 10 ? "0" + sec : sec)
+    }
+    console.log(this.state.start)
     const obj={
       "title" : this.state.title,
       "description" : this.state.description,
-      "begin_time" : this.state.start,
-      "end_time" : this.state.end,
+      "begin_time" : dateFormatting(this.state.start),
+      "end_time" : dateFormatting(this.state.end),
       "location" : this.state.location,
       "image" : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
     }
     console.log(obj)
-    let response;
+    // let response;
     
-    try {
-      let request = Axios({
-        method:'post',
-        url : '/api/events',
-        config: { },
-        headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token},
-        data : obj
-      });
-      response = await request;
-    } catch(e) {
-      console.log(e);
-      console.log(e.response);
-    }
-    console.log('ceci est une réponse', response);
+    // try {
+    //   let request = Axios({
+    //     method:'post',
+    //     url : '/api/events',
+    //     config: { },
+    //     headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token},
+    //     data : obj
+    //   });
+    //   response = await request;
+    // } catch(e) {
+    //   console.log(e);
+    //   console.log(e.response);
+    // }
+    // console.log('ceci est une réponse', response);
   }
 
   handleImageChange(e) {

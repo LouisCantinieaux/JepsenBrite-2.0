@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {Provider, Context} from '../store/store'
-import logo from '../layouts/logo.png'
+import logo from '../assets/Jepsen-brite.svg'
 
 class Navigationbar extends Component {
   constructor(context){
@@ -14,7 +14,7 @@ class Navigationbar extends Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" className="navBar sticky-top">
-        <img src={logo} height="50px" width="50px"/>
+        <img src={logo} height="100px"/>
         <Link className="navbar-brand" to="/">JepsenBrite</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
