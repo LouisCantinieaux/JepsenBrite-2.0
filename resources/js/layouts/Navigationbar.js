@@ -14,7 +14,7 @@ class Navigationbar extends Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" className="navBar sticky-top">
-        <Link className="navbar-brand" to="/"><img src={logo} height="100px"/></Link>
+        <Link className="navbar-brand" to="/"><img src={logo} height="30px" /></Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="responsive-navbar-nav">
