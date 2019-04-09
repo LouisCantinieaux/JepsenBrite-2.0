@@ -9,7 +9,7 @@ use Illuminate\Database\QueryException;
 
 class ParticipationController extends Controller
 {
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,14 +23,16 @@ class ParticipationController extends Controller
         $params = $request->all();
         $params['event_id'] = $eventId;
         $params['user_id'] = Auth::user()->id;
+        \Log::info($params);
         try{
             $participation = \App\Participation::create($params);
+            \Log::info($participation);
         } catch(QueryException $e) {
             return response()->json(['error' => 'already registered', 'event_id' => $eventId], 400);
         }
-        
-        
-        
+
+
+
         return response()->json(['message' => "registered successfully to event", 'event_id' => $eventId], 200);
     }
 

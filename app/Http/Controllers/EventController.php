@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Participation;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -65,7 +66,6 @@ class EventController extends Controller
     {
         $max = 20;
         $events = Event::orderBy('end_time')->orderBy('begin_time');
-        return response()->json(Event::all(), 200);
         if($from = $request->input('from', false)){
             $events->where('end_time', '>=', $from);
         }
@@ -106,5 +106,26 @@ class EventController extends Controller
         \Log::info($event);
         $event->delete();
         return response()->json(['message' => 'event has been canceled.']);
+    }
+
+    public function userEvents()
+    {
+        $userId = Auth::user()->id;
+        $sortedEvents = Event::with('users')
+            ->orderBy('end_time')
+            ->orderBy('begin_time');
+
+        $createdEvents = $sortedEvents
+            ->where('creator_id', $userId)
+            ->get();
+
+        $participations = Participation::where('user_id', $userId)->get()->toArray();
+        $eventIds = array_map(function($p){return $p['event_id'];}, $participations);
+        $participatesIn = $sortedEvents->whereIn('id', $eventIds)->get();
+
+        return response()->json([
+            'created_events' => $createdEvents,
+            'participates_in' => $participatesIn
+        ], 200);
     }
 }
