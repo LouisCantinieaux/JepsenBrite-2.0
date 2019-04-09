@@ -37,6 +37,18 @@ class ParticipationController extends Controller
     }
 
     /**
+     * Unregister
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(\App\Event $event, Request $request)
+    {
+        $userId = Auth::user()->id;
+        $participation = \App\Participation::where('user_id', $userId)->where('event_id', $event->id)->delete();
+        return response()->json(['message' => "unregistered successfully from event", 'event_id' => $event->id], 200);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

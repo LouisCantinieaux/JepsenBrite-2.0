@@ -31,6 +31,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('events', 'EventController@create');
     Route::post('events/{event}/register', 'ParticipationController@create');
+    Route::delete('events/{event}/register', 'ParticipationController@delete');
 
 
     Route::patch('events/{event}', 'EventController@update');
