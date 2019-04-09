@@ -112714,7 +112714,13 @@ function (_Component) {
           className: "card-body"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
           className: "card-title"
-        }, events.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, events.location, " - ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "From"), " ", events.begin_time, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "To"), " ", events.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        }, events.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "location"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-map-marker"
+        }), " ", events.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "date"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "From"), " ", events.begin_time, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "To"), " ", events.end_time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "mapsBtn btn btn-primary",
           "data-toggle": "collapse",
           href: "#collapse" + events.id,
@@ -112729,7 +112735,14 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card card-body"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
-          src: "test"
+          src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.709461360282!2d5.584393415925285!3d50.63251388211017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0f0ab95698caf%3A0xe21d0fe0a5856527!2sRue+de+Mulhouse%2C+4020+Li%C3%A8ge!5e0!3m2!1sfr!2sbe!4v1554793465934!5m2!1sfr!2sbe",
+          width: "100%",
+          height: "300",
+          frameBorder: "0",
+          style: {
+            border: 0
+          },
+          allowFullScreen: true
         }))))));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/events",
@@ -112763,8 +112776,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
-/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-markdown */ "./node_modules/react-markdown/lib/react-markdown.js");
+/* harmony import */ var react_markdown__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_markdown__WEBPACK_IMPORTED_MODULE_4__);
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -112898,7 +112911,7 @@ function (_Component) {
         className: "eventAuthor"
       }, " By Jos\xE9 Legrand "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
         className: "descriptionTitle mt-5"
-      }, "Event description:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_markdown__WEBPACK_IMPORTED_MODULE_5___default.a, {
+      }, "Event description:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_markdown__WEBPACK_IMPORTED_MODULE_4___default.a, {
         source: this.state.description
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
         className: "participateBtn"
@@ -113094,7 +113107,36 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("iframe", {
           src: "test"
         }))))));
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("nav", {
+        "aria-label": "Page navigation example"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "pagination justify-content-center mt-5"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "page-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        class: "page-link",
+        href: "#"
+      }, "Previous")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "page-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        class: "page-link",
+        href: "#"
+      }, "1")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "page-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        class: "page-link",
+        href: "#"
+      }, "2")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "page-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        class: "page-link",
+        href: "#"
+      }, "3")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "page-item"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        class: "page-link",
+        href: "#"
+      }, "Next")))));
     }
   }]);
 

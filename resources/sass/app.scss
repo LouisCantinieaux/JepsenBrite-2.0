@@ -498,3 +498,21 @@ body{
 .viewMore:hover{
   color: black;
 }
+
+.location{
+  font-weight: bolder;
+  font-size: 120%;
+}
+
+.card-title{
+  font-size: 150%;
+}
+
+.page-item a{
+  color: black!important;
+}
+
+.page-item a:active, .page-item a:visited, .page-item a:focus{
+  border-color: black;
+  box-shadow: none;
+}
