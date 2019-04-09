@@ -63,6 +63,15 @@ export default class Events extends Component {
               </div>
                 ))}
           </div>
+          <nav aria-label="Page navigation example">
+            <ul className="pagination justify-content-center mt-5">
+              <li className="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li className="page-item"><a class="page-link" href="#">1</a></li>
+              <li className="page-item"><a class="page-link" href="#">2</a></li>
+              <li className="page-item"><a class="page-link" href="#">3</a></li>
+              <li className="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
         </React.Fragment>
     )
   }
