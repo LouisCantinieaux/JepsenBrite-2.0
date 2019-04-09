@@ -19,7 +19,7 @@ class Navigationbar extends Component {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Link className="nav-link" to="/events">Events</Link>
+            <Link className="nav-link ml-5" to="/events">All events</Link>
           </Nav>
           <Context.Consumer>
             {(context) => (
@@ -39,8 +39,8 @@ class Navigationbar extends Component {
                 </Nav>
                   case true: return <Nav>
                     <NavDropdown title={"Welcome, "+context.state.name} >
-                      <Link to ="/profile" className="dropdown-item">Your profile</Link>
-                      <Link to ="/events" className="dropdown-item">Your events</Link>
+                      <Link to ="/profile" className="dropdown-item"><i className="fa fa-user-circle mr-2"></i>Your profile</Link>
+                      <Link to ="/events" className="dropdown-item"><i className="fa fa-calendar mr-2"></i>Your events</Link>
                     </NavDropdown>
                     <Link className="nav-link" to="/create">Create an event</Link>
                     <Link className="nav-link" to="/" onClick={context.state.logout} >

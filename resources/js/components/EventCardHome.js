@@ -9,7 +9,7 @@ export default class EventCardHome extends Component {
     return (
       <React.Fragment>
         <div className="futurEvents pt-4 pb-3">
-          <h2 className="text-center">Future events</h2>
+          <h2 className="text-center"><i className="fa fa-bookmark mr-5"></i>Future events<i className="fa fa-bookmark ml-5"></i></h2>
           <hr className="mt-4"/>
         </div>
         <div className="cards row mx-auto pb-4">
@@ -39,7 +39,7 @@ export default class EventCardHome extends Component {
               </div>
             </div>
               ))}
-          <Link to="/events" className="viewMore mx-auto mt-5">View more events</Link>
+          <Link to="/events" className="viewMore mx-auto mt-5 text-center">View more events</Link>
         </div>
 
       </React.Fragment>

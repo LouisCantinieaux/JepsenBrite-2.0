@@ -10266,6 +10266,7 @@ body {
 .viewMore {
   font-size: 200%;
   color: black;
+  width: 100%;
 }
 
 .viewMore:hover {
