@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
+
+Route::middleware('auth:api')->get('events/userevents', 'EventController@userEvents');
+
 Route::get('events/{eventWithDeleted}', 'EventController@show');
 Route::get('users/{user}', 'AuthController@user');
 Route::get('events', 'EventController@showAll');
