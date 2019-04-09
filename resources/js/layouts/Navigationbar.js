@@ -43,7 +43,7 @@ class Navigationbar extends Component {
                       <Link to ="/profile" className="dropdown-item">Your profile</Link>
                       <Link to ="/events" className="dropdown-item">Your events</Link>
                     </NavDropdown>
-                    <Link className="nav-link" to="/create">Create an article</Link>
+                    <Link className="nav-link" to="/create">Create an event</Link>
                     <Link className="nav-link" to="/" onClick={context.state.logout} >
                       logout
                     </Link>

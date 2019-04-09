@@ -9735,10 +9735,6 @@ h3 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.navBar {
-  height: 6vh;
-}
-
 .carouselImg, .carousel {
   height: 60vh;
 }
@@ -9785,6 +9781,10 @@ h3 {
 .container-card {
   width: 90%;
   margin: auto;
+}
+
+.card {
+  border-color: black;
 }
 
 .card:hover {
@@ -9946,9 +9946,16 @@ section .section-title {
 
 .box6 img {
   width: 100%;
-  height: auto;
+  height: 75vh;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
+@media (max-width: 767px) {
+  .box6 img {
+    height: 30vh;
+  }
+}
 .box6:hover img {
   opacity: 0.5;
 }
@@ -10244,5 +10251,23 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .mapsBtn:hover {
-  text-shadow: 0px 0px 2px #009BFF !important;
+  box-shadow: 0px 0px 4px black !important;
+}
+
+h1 {
+  background-color: white;
+  font-family: "Baloo Chettan", cursive;
+}
+
+body {
+  background-color: white;
+}
+
+.viewMore {
+  font-size: 200%;
+  color: black;
+}
+
+.viewMore:hover {
+  color: black;
 }
