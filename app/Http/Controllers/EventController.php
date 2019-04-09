@@ -54,7 +54,8 @@ class EventController extends Controller
     {
         //\Log::info($eventWithDeleted);
         $event = $eventWithDeleted;
-        $event['participants'] = $event->users()->get(['users.id','name']);
+        $event['creator'] = $event->creator()->get(['users.id', 'name','avatar']);
+        $event['participants'] = $event->users()->get(['users.id','name', 'avatar']);
         foreach ($event['participants'] as $participant) {
             unset($participant['pivot']);
         }
