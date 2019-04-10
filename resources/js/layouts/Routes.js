@@ -11,6 +11,7 @@ import Events from '../components/Events'
 import Profile from '../components/Profile'
 import EditProfile from '../components/EditProfile'
 import EditEvent from '../components/EditEvent'
+import Error from '../components/Error'
 
 const Routes = () => (
     <Switch>
@@ -23,6 +24,7 @@ const Routes = () => (
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/edit-profile" component={EditProfile} />
       <Route exact path="/edit/event/:id" component={EditEvent} />
+      <Route exact path="/error" component={Error} />
     </Switch>)
 
 export default Routes

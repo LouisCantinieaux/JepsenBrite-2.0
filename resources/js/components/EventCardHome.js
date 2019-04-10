@@ -40,6 +40,7 @@ export default class EventCardHome extends Component {
             </div>
               ))}
           <Link to="/events" className="viewMore mx-auto mt-5 text-center">View more events</Link>
+          <Link to="/error" className="viewMore mx-auto mt-5 text-center">Test 404</Link>
         </div>
 
       </React.Fragment>

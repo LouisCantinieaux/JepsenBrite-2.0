@@ -10298,3 +10298,22 @@ body {
 .quick-links {
   color: white;
 }
+
+.oops {
+  font-size: 450%;
+  text-align: center;
+}
+
+.error {
+  font-size: 600%;
+  text-align: center;
+}
+
+.errorText {
+  font-size: 200%;
+  text-align: center;
+}
+
+.john {
+  display: block;
+}
