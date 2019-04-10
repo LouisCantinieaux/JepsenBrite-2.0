@@ -23,7 +23,7 @@ class Reminder extends Mailable
     public function __construct(Event $event)
     {
         $this->event = $event;
-        $this->eventUrl = 'https://jepsenbrite.herokuapp.com/events/'.$event['id'];
+        $this->eventUrl = 'https://jepsenbrite.herokuapp.com/event/'.$event['id'];
     }
 
     /**

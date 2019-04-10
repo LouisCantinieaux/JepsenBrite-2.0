@@ -46,15 +46,7 @@ export default class EditEvent extends Component {
   async onSubmit(data){
     data.preventDefault();
     function dateFormatting(date){
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-
-      var hours = date.getHours();
-      var min = date.getMinutes();
-      var sec = date.getSeconds();
-
-      return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + ' ' + (hours < 10 ? "0" + hours : hours) +':'+ (min < 10 ? "0" + min : min)+ ':' + (sec < 10 ? "0" + sec : sec)
+      return date.toISOString();
     }
     const obj={
       "title" : this.state.title,
@@ -65,7 +57,7 @@ export default class EditEvent extends Component {
       "image" : (this.state.imagePreviewUrl ? this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1) : this.state.image)
     }
     let response;
-    
+
     try {
       let request = Axios({
         method:'patch',
@@ -146,7 +138,7 @@ export default class EditEvent extends Component {
 //   return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
 // }
   render() {
-    
+
   return (
     <div className="createPage mt-3">
     <h1 className="mb-5">Create your own event</h1>

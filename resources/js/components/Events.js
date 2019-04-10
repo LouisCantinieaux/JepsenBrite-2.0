@@ -19,26 +19,27 @@ export default class Events extends Component {
     });
   }
   async componentDidMount(){
-    function dateNow(date){
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-
-      var hours = date.getHours();
-      var min = date.getMinutes();
-      var sec = date.getSeconds();
-
-      return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + '%20' + (hours < 10 ? "0" + hours : hours) +'%3'+ (min < 10 ? "0" + min : min)+ '%3' + (sec < 10 ? "0" + sec : sec)
-    }
     let result = await axios({
           method:'get',
-          url : '/api/events?from='+dateNow(new Date),
+          url : '/api/events?from='+encodeURIComponent((new Date(Date.now())).toISOString()),
           config: { headers: {'Content-Type': 'application/json' }}
         })
     this.setState({
       events: result.data
     })
   }
+
+  parseDBDateTime(datetime){
+    console.log('datetime:', datetime);
+    if(datetime == '')
+      return new Date(Date.now());
+    let [date, time] = datetime.split(' ');
+    let [Y,M,D] = date.split('-');
+    time = time.slice(0, -3);
+    let [h,m,s] = time.split(':');
+    return new Date(Date.UTC(Y,M-1,D,h,m,s));
+  }
+
   render() {
     const { events, currentPage, eventsPerPage } = this.state;
 
@@ -66,8 +67,7 @@ export default class Events extends Component {
                   <div className="card-body">
                     <h5 className="card-title">{events.title}</h5>
                     <hr />
-                    <p className="location"><i className="fa fa-map-marker"></i> {events.location}</p> 
-                  <p className="date"><b>From</b> {events.begin_time.slice(0,-6)} <b>To</b> {events.end_time.slice(0,-6)}</p>
+                    <p>{events.location} - <b>From</b> {this.parseDBDateTime(events.begin_time).toLocaleString()} <b>To</b> {this.parseDBDateTime(events.end_time).toLocaleString()}</p>
                     <p>
                       <a className="mapsBtn btn btn-primary" data-toggle="collapse" href={"#collapse" + events.id} role="button" aria-expanded="false" aria-controls={"collapse" + events.id}>
                         <i className="fa fa-map"></i> Show on map
