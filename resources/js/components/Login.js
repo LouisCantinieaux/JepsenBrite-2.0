@@ -71,9 +71,7 @@ class Login extends Component {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" defaultValue={this.state.password} onChange={this.onChangePassword} />
           </Form.Group>
-          <Form.Group controlId="formBasicChecbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
+
           <Button variant="primary" type="submit">
             Submit
           </Button>

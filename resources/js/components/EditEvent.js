@@ -11,33 +11,38 @@ import Axios from "axios"
 
 import SimpleMDE from 'react-simplemde-editor';
 
-
-class Create extends Component {
-  constructor(props, context){
-    super(props, context)
+export default class EditEvent extends Component {
+  constructor(context){
+    super(context)
     this.onChangeTitle=this.onChangeTitle.bind(this)
     this.handleOnChange=this.handleOnChange.bind(this)
     this.handleChangeDescription= this.handleChangeDescription.bind(this)
     this.onChangeLocation= this.onChangeLocation.bind(this)
     this.onSubmit=this.onSubmit.bind(this)
-    this.state = {
-      title:"",
-      description:"",
-      begin_time: "",
-      end_time: "",
-      location : "",
-      image:"",
-      file: '',
-      imagePreviewUrl: '',
-      start: "",
-      end: ""
+    this.state={
+      title: '',
+      description:'',
+      begin_time : '',
+      end_time : '',
+      location : '',
+      image : ''
     }
   }
-
-  componentDidUpdate(){
-    this.state
+  async componentDidMount(){
+    let response = await Axios({
+      method:'get',
+      url : '/api/events/'+this.props.match.params.id,
+      headers: {'Content-Type': 'application/json' }
+    })
+    this.setState({
+      title: response.data.title,
+      description: response.data.description,
+      begin_time : response.data.begin_time,
+      end_time : response.data.end_time,
+      location : response.data.location,
+      image : response.data.image
+    })
   }
-
   async onSubmit(data){
     data.preventDefault();
     function dateFormatting(date){
@@ -63,7 +68,7 @@ class Create extends Component {
     
     try {
       let request = Axios({
-        method:'post',
+        method:'patch',
         url : '/api/events',
         config: { },
         headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token},
@@ -112,6 +117,7 @@ class Create extends Component {
         } else {
           state[from] = e[0];
         }
+        console.log(this.state.end)
         break;
       default:
     }
@@ -160,7 +166,7 @@ class Create extends Component {
           <Form.Control className="mb-3" type="text" placeholder="Location" defaultValue={this.state.location} onChange={this.onChangeLocation} />
           <Form.Label >Tell people more about it</Form.Label>
           <SimpleMDE
-            defaultValue={this.state.description}
+            value={this.state.description}
             onChange={this.handleChangeDescription}
           >Description</SimpleMDE>
           <Form.Label htmlFor="eventStart" >When's the start of your event ?</Form.Label>
@@ -172,8 +178,7 @@ class Create extends Component {
             altInput: true,
             time_24hr: true,
             locale: French,
-            altFormat: "D j F Y H:i",
-            minDate: "today"
+            altFormat: "D j F Y H:i"
           }}
           onChange={e => this.handleOnChange(e, "start")}
           className="mb-3"
@@ -201,6 +206,3 @@ class Create extends Component {
     )
   }
 }
-Create.contextType = Context
-
-export default Create

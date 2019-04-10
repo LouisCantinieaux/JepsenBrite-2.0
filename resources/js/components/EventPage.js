@@ -9,9 +9,11 @@ export default class EventPage extends Component {
   constructor(context){
     super(context)
     this.participate=this.participate.bind(this)
+    this.unparticipate=this.unparticipate.bind(this)
     this.state={
       title: '',
       description:'',
+      creator:'',
       begin_time : '',
       end_time : '',
       location : '',
@@ -20,12 +22,15 @@ export default class EventPage extends Component {
       participation:false
     }
   }
+  componentDidUpdate(){
+  }
   async componentDidMount(){
     let response = await Axios({
       method:'get',
       url : '/api/events/'+this.props.match.params.id,
       headers: {'Content-Type': 'application/json' }
     })
+    
     this.setState({
       title: response.data.title,
       description: response.data.description,
@@ -33,6 +38,7 @@ export default class EventPage extends Component {
       end_time : response.data.end_time,
       location : response.data.location,
       image : response.data.image,
+      creator: response.data.creator[0].name,
       participants: response.data.participants
     })
   }
@@ -50,12 +56,9 @@ export default class EventPage extends Component {
 
       return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + ' ' + (hours < 10 ? "0" + hours : hours) +':'+ (min < 10 ? "0" + min : min)+ ':' + (sec < 10 ? "0" + sec : sec)
     }
-    console.log (this.state.begin_time)
-    console.log(dateReminder(new Date(this.state.begin_time.substring(0,19))))
     const obj = {
       reminder_date : dateReminder(new Date(this.state.begin_time.substring(0,19)))
     }
-    console.log(obj);
     let axiosConfig = {
       method:'post',
       url : '/api/events/'+this.props.match.params.id+'/register',
@@ -63,13 +66,35 @@ export default class EventPage extends Component {
       headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token },
       data:obj
     };
-    console.log(axiosConfig)
     let request = Axios(axiosConfig);
-    console.log(request);
     let response = await request;
-    console.log(response)
+    let res = await Axios({
+      method:'get',
+      url : '/api/events/'+this.props.match.params.id,
+      headers: {'Content-Type': 'application/json' }
+    })
     this.setState({
-      participation:true
+      participation:true,
+      participants: res.data.participants
+    })
+  }
+  async unparticipate(){
+    let axiosConfig = {
+      method:'delete',
+      url : '/api/events/'+this.props.match.params.id+'/register',
+      
+      headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token },
+    };
+    let request = Axios(axiosConfig);
+    let response = await request;
+    let res = await Axios({
+      method:'get',
+      url : '/api/events/'+this.props.match.params.id,
+      headers: {'Content-Type': 'application/json' }
+    })
+    this.setState({
+      participation:false,
+      participants: res.data.participants
     })
   }
   render() {
@@ -80,7 +105,7 @@ export default class EventPage extends Component {
               <img src={"data:image;base64,"+this.state.image} alt={this.state.title}/>
               <div className="box-content">
                   <h2 className="title">{this.state.title}</h2>
-                  <span className="post">José Legrand</span>
+                  <span className="post">{this.state.creator}</span>
                   <ul className="icon">
                     <li><p className="date">{this.state.begin_time}</p></li>
                     <li><p className="hours">{this.state.end_time}</p></li>
@@ -89,34 +114,20 @@ export default class EventPage extends Component {
             </div>
         </div>
         <div className="eventContent mt-2 ml-3">
-          <p className="eventTitle">{this.state.title}</p><span className="eventAuthor" > By José Legrand </span>
+          <p className="eventTitle">{this.state.title}</p><span className="eventAuthor" > By {this.state.creator} </span>
           <h2 className="descriptionTitle mt-5">Event description:</h2>
           <ReactMarkdown source={this.state.description}/>
 
-          {((this.state.participation === false) ? <a href="javascript:void(0)" onClick={this.participate}><Button className="participateBtn">I want to participate</Button></a> : <Button className="btn-danger">Finally I won't come</Button>)}
+          {((this.state.participation === false) ? <a href="javascript:void(0)" onClick={this.participate}><Button className="participateBtn">I want to participate</Button></a> : <a href="javascript:void(0)" onClick={this.unparticipate}><Button className="btn-danger">Finally I won't come</Button></a>)}
 
-          <h3 className="mt-3">Participants (5):</h3>
+          <h3 className="mt-3">Participants ({this.state.participants.length}):</h3>
           <div className="participants">
-            <div className="participant text-center">
-              <img className="ofc rotate" src="https://specials-images.forbesimg.com/imageserve/5c76b4b84bbe6f24ad99c370/416x416.jpg?background=000000&cropX1=0&cropX2=4000&cropY1=0&cropY2=4000" />
-              <p>Bill</p>
-            </div>
-            <div className="participant text-center">
-              <img className="ofc rotate" src="http://jactiv.ouest-france.fr/sites/default/files/imagecache/article-detail/images/2018/04/11/SI_6185723_1.jpg" />
-              <p>Angèle</p>
-            </div>
-            <div className="participant text-center">
-              <img className="ofc rotate" src="https://www.ballecourbe.ca/wp-content/uploads/2015/10/jcv-960x540.png" />
-              <p>Jean-Claude</p>
-            </div>
-            <div className="participant text-center">
-              <img className="ofc rotate" src="https://www.nouvelordremondial.cc/wp-content/uploads/2018/07/durif-pas-mort.jpg" />
-              <p>Sylvain</p>
-            </div>
-            <div className="participant text-center">
-              <img className="ofc rotate" src="https://basketswag.files.wordpress.com/2016/03/eddy-malou-generator.jpg?w=200" />
-              <p>Eddy</p>
-            </div>
+            {this.state.participants.map(participants => (
+              <div className="participant text-center"  key={participants.name}>
+                <img className="ofc rotate" src={(this.state.image ?"data:image;base64,"+participants.avatar :"https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png")} />
+                <p>{participants.name}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

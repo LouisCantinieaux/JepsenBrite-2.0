@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Registered;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -104,5 +105,17 @@ class AuthController extends Controller
 
     public function user(User $user){
         return response()->json($user->only(['id', 'name']));
+    }
+
+    /**
+     * Patch the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function patchUser(Request $request)
+    {
+        $user = Auth::user();
+        $user->update($request->all());
+        return $user;
     }
 }

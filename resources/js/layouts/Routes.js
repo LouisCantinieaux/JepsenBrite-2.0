@@ -10,7 +10,7 @@ import EventPage from '../components/EventPage'
 import Events from '../components/Events'
 import Profile from '../components/Profile'
 import EditProfile from '../components/EditProfile'
-
+import EditEvent from '../components/EditEvent'
 
 const Routes = () => (
     <Switch>
@@ -22,6 +22,7 @@ const Routes = () => (
       <Route exact path="/events" component={Events} />
       <Route exact path="/profile" component={Profile} />
       <Route exact path="/edit-profile" component={EditProfile} />
+      <Route exact path="/edit/event/:id" component={EditEvent} />
     </Switch>)
 
 export default Routes

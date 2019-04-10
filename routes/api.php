@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
+
+Route::middleware('auth:api')->get('events/userevents', 'EventController@userEvents');
+
 Route::get('events/{eventWithDeleted}', 'EventController@show');
 Route::get('users/{user}', 'AuthController@user');
 Route::get('events', 'EventController@showAll');
@@ -23,9 +26,11 @@ Route::middleware('auth:api')->group(function () {
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::get('me', 'AuthController@me');
+    Route::patch('me', 'AuthController@patchUser');
 
     Route::post('events', 'EventController@create');
     Route::post('events/{event}/register', 'ParticipationController@create');
+    Route::delete('events/{event}/register', 'ParticipationController@delete');
 
 
     Route::patch('events/{event}', 'EventController@update');
