@@ -25,22 +25,26 @@ export default class EventPage extends Component {
   componentDidUpdate(){
   }
   async componentDidMount(){
-    let response = await Axios({
-      method:'get',
-      url : '/api/events/'+this.props.match.params.id,
-      headers: {'Content-Type': 'application/json' }
-    })
+    try {
+      let response = await Axios({
+        method:'get',
+        url : '/api/events/'+this.props.match.params.id,
+        headers: {'Content-Type': 'application/json' }
+      })
 
-    this.setState({
-      title: response.data.title,
-      description: response.data.description,
-      begin_time : response.data.begin_time,
-      end_time : response.data.end_time,
-      location : response.data.location,
-      image : response.data.image,
-      creator: response.data.creator[0].name,
-      participants: response.data.participants
-    })
+      this.setState({
+        title: response.data.title,
+        description: response.data.description,
+        begin_time : response.data.begin_time,
+        end_time : response.data.end_time,
+        location : response.data.location,
+        image : response.data.image,
+        creator: response.data.creator[0].name,
+        participants: response.data.participants
+      })
+    } catch {
+      this.props.history.push('/error')
+    }
   }
 
   async participate(){

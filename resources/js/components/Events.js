@@ -5,9 +5,18 @@ import { Link } from 'react-router-dom'
 export default class Events extends Component {
   constructor(){
     super()
+    this.handleClick = this.handleClick.bind(this);
     this.state= {
-      events: []
+      events: [],
+      currentPage: 1,
+      eventsPerPage: 20
     }
+  }
+
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
   }
   async componentDidMount(){
     function dateNow(date){
@@ -31,14 +40,24 @@ export default class Events extends Component {
     })
   }
   render() {
-    let events = this.state.events;
+    const { events, currentPage, eventsPerPage } = this.state;
+
+    const indexOfLastEvents = currentPage * eventsPerPage;
+    const indexOfFirstEvents = indexOfLastEvents - eventsPerPage;
+    const currentEvents = events.slice(indexOfFirstEvents, indexOfLastEvents);
+    
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(events.length / eventsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
     return (
       <React.Fragment>
         <h1 className="text-center mt-3">All future events</h1>
         <hr/>
         <div className="cards row mx-auto pb-4">
 
-            {events.map(events => (
+            {currentEvents.map(events => (
               <div className="col-md-3 mt-2" key={events.id}>
                 <div className="card text-center mt-3">
                   <Link to={"/event/"+events.id}>
@@ -66,11 +85,10 @@ export default class Events extends Component {
           </div>
           <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-center mt-5">
-              <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-              <li className="page-item"><a className="page-link" href="#">1</a></li>
-              <li className="page-item"><a className="page-link" href="#">2</a></li>
-              <li className="page-item"><a className="page-link" href="#">3</a></li>
-              <li className="page-item"><a className="page-link" href="#">Next</a></li>
+            {pageNumbers.map(number => (
+              <li className="page-item" key={number}  id={number} onClick={this.handleClick}><a className="page-link" href="#">{number}</a></li>
+
+            ))}
             </ul>
           </nav>
         </React.Fragment>

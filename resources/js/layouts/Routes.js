@@ -26,7 +26,8 @@ const Routes = () => (
       <Route exact path="/edit-profile" component={EditProfile} />
       <Route exact path="/edit/event/:id" component={EditEvent} />
       <Route exact path="/events" component={AllEvents} />
-      <Route exact path="/error" component={Error} />
+      <Route component={Error} />
+      <Route path="/error" component={Error} />
     </Switch>)
 
 export default Routes
