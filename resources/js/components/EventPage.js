@@ -123,9 +123,8 @@ export default class EventPage extends Component {
             </div>
         </div>
         <div className="eventContent mt-2 ml-3">
-          <p className="eventTitle">{this.state.title}</p><span className="eventAuthor" > By {this.state.creator} </span>
-          <h2 className="descriptionTitle mt-5">Event description:</h2>
-          <ReactMarkdown source={this.state.description}/>
+          <p className="eventTitle">{this.state.title}</p><span className="eventAuthor" > By {this.state.creator} </span><p className="eventTime mt-2" >From {this.state.begin_time.slice(0, -6)} </p><p className="eventTime mt-2" >To {this.state.end_time.slice(0, -6)} </p>
+          <ReactMarkdown className="desc mt-5 mb-5" source={this.state.description}/>
 
           {((this.state.participation === false) ? <a href="javascript:void(0)" onClick={this.participate}><Button className="participateBtn">I want to participate</Button></a> : <a href="javascript:void(0)" onClick={this.unparticipate}><Button className="btn-danger">Finally I won't come</Button></a>)}
 
