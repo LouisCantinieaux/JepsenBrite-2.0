@@ -9784,7 +9784,7 @@ h3 {
 }
 
 .card {
-  border-color: black;
+  border-color: grey;
 }
 
 .card:hover {
@@ -10196,8 +10196,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .futurEvents {
   height: 10vh;
-  background-color: white;
-  border-top: black 8px solid;
+  background-color: black;
+  color: white;
+  border-top: #FF4A4A 8px solid;
   font-family: "Baloo Chettan", cursive;
 }
 
@@ -10257,10 +10258,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 h1 {
   background-color: white;
   font-family: "Baloo Chettan", cursive;
-}
-
-body {
-  background-color: white;
 }
 
 .viewMore {
@@ -10343,6 +10340,7 @@ body {
   box-shadow: 0px 0px 4px lightgrey;
   border-radius: 10px 10px 10px 10px;
   margin-bottom: 5vh;
+  background-color: white;
 }
 
 .desc {
