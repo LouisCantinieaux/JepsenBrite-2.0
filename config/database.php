@@ -13,6 +13,10 @@ if(env('APP_ENV', 'production') == 'production'){
     $username = $url["user"];
     $password = $url["pass"];
     $database = ltrim($url["path"], "/");
+    error_log('$host:'.$host);
+    error_log('$username:'.$username);
+    error_log('$password:'.$password);
+    error_log('$database:'.$database);
 }
 
 return [

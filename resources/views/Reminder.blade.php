@@ -1,12 +1,14 @@
 @component('mail::message')
-# You have an event coming up
+# You have an event coming up<br><br>
 
-## {{ $event->title }}
+## {{ $event->title }}<br>
 
-### {{ $event->location }}
+### {{ $event->location }}<br><br>
 
-from {{ date('l jS \\of F Y h:i:s A', strtotime($event->begin_time)) }}
-to {{ date('l jS \\of F Y h:i:s A', strtotime($event->end_time)) }}
+from {{ date('l jS \\of F Y H:i', strtotime($event->begin_time)) }} UTC<br>
+to {{ date('l jS \\of F Y H:i', strtotime($event->end_time)) }} UTC<br>
+
+(go to event page to see the time in your local timezone)
 
 @component('mail::button', ['url' => $eventUrl])
 Go to event page

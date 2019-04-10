@@ -20,7 +20,7 @@ export default class Provider extends Component {
           headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+tokenKey}
         });
         let response = await request;
-        this.setState({ 
+        this.setState({
             loggedIn: true,
             token: tokenKey ,
             id: response.data.id,
@@ -29,15 +29,17 @@ export default class Provider extends Component {
           window.sessionStorage.setItem("token" , tokenKey)
           window.sessionStorage.setItem("loggedIn", this.state.loggedIn)
           window.sessionStorage.setItem('name', this.state.name)
+          window.sessionStorage.setItem('id', this.state.id)
         },
       logout : () =>{this.setState({
             loggedIn : false,
             token: '',
-            name:''
+            name:'',
+            id: ''
           })
           window.sessionStorage.clear();
         },
-      refresh : async (token)=>{ 
+      refresh : async (token)=>{
         console.log(token)
         let response;
         try {
@@ -60,9 +62,10 @@ export default class Provider extends Component {
     this.setState({
       token : window.sessionStorage.getItem('token'),
       loggedIn : JSON.parse(window.sessionStorage.getItem('loggedIn')),
-      name : window.sessionStorage.getItem('name')
+      name : window.sessionStorage.getItem('name'),
+      id: window.sessionStorage.getItem('id')
     })
-    
+
   }
   componentDidUpdate(){
     this.state
