@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
 @import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
 
 
 // Variables
@@ -529,16 +530,19 @@ body{
 .oops{
   font-size: 450%;
   text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .error{
   font-size: 600%;
   text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .errorText{
-  font-size: 200%;
+  font-size: 300%;
   text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .john{
