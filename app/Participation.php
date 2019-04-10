@@ -28,7 +28,7 @@ class Participation extends Model
      * @var array
      */
     protected $casts = [
-        'reminder_date' => 'datetime',
+        'reminder_date' => 'datetimetz',
     ];
 
     public function event()

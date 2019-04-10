@@ -43,21 +43,26 @@ export default class EventPage extends Component {
     })
   }
 
+  parseDBDateTime(datetime){
+    console.log('datetime:', datetime);
+    if(datetime == '')
+      return new Date(Date.now());
+    let [date, time] = datetime.split(' ');
+    let [Y,M,D] = date.split('-');
+    time = time.slice(0, -3);
+    let [h,m,s] = time.split(':');
+    return new Date(Date.UTC(Y,M-1,D,h,m,s));
+  }
+
   async participate(){
     // let date_reminder = new Date(this.state.begin_time.substring(0,19))
-    function dateReminder(date){
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-
-      var hours = date.getHours()+2;
-      var min = date.getMinutes();
-      var sec = date.getSeconds();
-
-      return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + ' ' + (hours < 10 ? "0" + hours : hours) +':'+ (min < 10 ? "0" + min : min)+ ':' + (sec < 10 ? "0" + sec : sec)
+    const dateReminder = (begin) => {
+      let beginDateTime = this.parseDBDateTime(begin);
+      let reminder_date = new Date(beginDateTime - (1000*60*60*24));
+      return reminder_date.toISOString();
     }
     const obj = {
-      reminder_date : dateReminder(new Date(this.state.begin_time.substring(0,19)))
+      reminder_date : dateReminder(this.state.begin_time)
     }
     let axiosConfig = {
       method:'post',
@@ -107,8 +112,8 @@ export default class EventPage extends Component {
                   <h2 className="title">{this.state.title}</h2>
                   <span className="post">{this.state.creator}</span>
                   <ul className="icon">
-                    <li><p className="date">{this.state.begin_time.slice(0, -6)}</p></li>
-                    <li><p className="hours">{this.state.end_time.slice(0, -6)}</p></li>
+                    <li><p className="date">{this.parseDBDateTime(this.state.begin_time).toLocaleString()}</p></li>
+                    <li><p className="hours">{this.parseDBDateTime(this.state.end_time).toLocaleString()}</p></li>
                   </ul>
               </div>
             </div>
