@@ -71,19 +71,21 @@ export default class Profile extends Component {
 
   render() {
     return (
-      <div className="container">
-        <img src={(this.state.image ? "data:image;base64,"+this.state.image :"https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png")} className="rounded-circle border border-light shadow ofc text-center mt-3" width="150px" height="150px" />
-        <h1>{this.state.name} <Link to="/edit-profile">
-          <i className="fa fa-edit"></i>
-        </Link>
-        </h1>
-
-
-        <div className="row">
-          <div className="col-sm-6">{this.state.eventsCreated.map(events => ( <p key={events.id + 'created'}><Link to={"/event/"+events.id}>{events.title}</Link> <div className="float-right"> <Link to={"/edit/event/"+events.id}><i className="fa fa-edit"></i></Link> <a href="javascript:void()" onClick={() => this.cancelEvent(events.id)}><i className="fa fa-trash"></i></a></div> </p>))}</div>
-          <div className="col-sm-6">{this.state.eventsParticipateIn.map(events => ( <p key={events.id + 'participates'}><Link to={"/event/"+events.id}>{events.title}</Link> </p>))}</div>
+      <React.Fragment>
+        <div className="profileContainer container mt-5 w-100">
+          <h1 className="text-center mt-3 mb-3">Your profile</h1>
+          <img src={(this.state.image ? "data:image;base64,"+this.state.image :"https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png")} className="rounded-circle border border-light shadow ofc text-center mt-3" width="150px" height="150px" />  
+          <h1 className="ml-5">{this.state.name} <Link to="/edit-profile">
+            <i className="edition fa fa-edit ml-5">edit profile</i>
+          </Link>
+          </h1>
+          <hr/>
+          <div className="eventProf row justify-content-between mt-5">
+            <div className="col-md-4"><h2>My events</h2>  {this.state.eventsCreated.map(events => ( <p key={events.id + 'created'}><Link to={"/event/"+events.id}>{events.title}</Link> <div className="float-right"> <Link to={"/edit/event/"+events.id}><i className="fa fa-edit"></i></Link> <a href="javascript:void()" onClick={() => this.cancelEvent(events.id)}><i className="fa fa-trash"></i></a></div> </p>))}</div>
+            <div className="col-md-4"><h2>Events I attend</h2>{this.state.eventsParticipateIn.map(events => ( <p key={events.id + 'participates'}><Link to={"/event/"+events.id}>{events.title}</Link> </p>))}</div>
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }
