@@ -10195,7 +10195,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .futurEvents {
-  height: 10vh;
   background-color: black;
   color: white;
   border-top: #FF4A4A 8px solid;
@@ -10326,7 +10325,7 @@ h1 {
   border: solid 1px black;
   border-radius: 10px;
   text-align: center;
-  width: 250px;
+  width: 100%;
   margin-bottom: 5vh;
   font-family: "Baloo Chettan", cursive;
 }

@@ -81,8 +81,8 @@ export default class Profile extends Component {
           </h1>
           <hr/>
           <div className="eventProf row justify-content-between mt-5">
-            <div className="col-md-4"><h2>My events</h2>  {this.state.eventsCreated.map(events => ( <p key={events.id + 'created'}><Link to={"/event/"+events.id}>{events.title}</Link> <div className="float-right"> <Link to={"/edit/event/"+events.id}><i className="fa fa-edit"></i></Link> <a href="javascript:void()" onClick={() => this.cancelEvent(events.id)}><i className="fa fa-trash"></i></a></div> </p>))}</div>
-            <div className="col-md-4"><h2>Events I attend</h2>{this.state.eventsParticipateIn.map(events => ( <p key={events.id + 'participates'}><Link to={"/event/"+events.id}>{events.title}</Link> </p>))}</div>
+            <div className="col-md-6"><h2>My events</h2>  {this.state.eventsCreated.map(events => ( <p key={events.id + 'created'}><Link to={"/event/"+events.id}>{events.title}</Link> <div className="float-right"> <Link to={"/edit/event/"+events.id}><i className="fa fa-edit"></i></Link> <a href="javascript:void()" onClick={() => this.cancelEvent(events.id)}><i className="fa fa-trash"></i></a></div> </p>))}</div>
+            <div className="col-md-6"><h2>Events I attend</h2>{this.state.eventsParticipateIn.map(events => ( <p key={events.id + 'participates'}><Link to={"/event/"+events.id}>{events.title}</Link> </p>))}</div>
           </div>
         </div>
       </React.Fragment>
