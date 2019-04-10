@@ -30,7 +30,7 @@ export default class EventPage extends Component {
       url : '/api/events/'+this.props.match.params.id,
       headers: {'Content-Type': 'application/json' }
     })
-    
+
     this.setState({
       title: response.data.title,
       description: response.data.description,
@@ -62,7 +62,7 @@ export default class EventPage extends Component {
     let axiosConfig = {
       method:'post',
       url : '/api/events/'+this.props.match.params.id+'/register',
-      
+
       headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token },
       data:obj
     };
@@ -82,7 +82,7 @@ export default class EventPage extends Component {
     let axiosConfig = {
       method:'delete',
       url : '/api/events/'+this.props.match.params.id+'/register',
-      
+
       headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token },
     };
     let request = Axios(axiosConfig);
@@ -107,8 +107,8 @@ export default class EventPage extends Component {
                   <h2 className="title">{this.state.title}</h2>
                   <span className="post">{this.state.creator}</span>
                   <ul className="icon">
-                    <li><p className="date">{this.state.begin_time}</p></li>
-                    <li><p className="hours">{this.state.end_time}</p></li>
+                    <li><p className="date">{this.state.begin_time.slice(0, -6)}</p></li>
+                    <li><p className="hours">{this.state.end_time.slice(0, -6)}</p></li>
                   </ul>
               </div>
             </div>

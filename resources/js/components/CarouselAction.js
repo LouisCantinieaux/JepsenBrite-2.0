@@ -23,7 +23,7 @@ export default class CarouselAction extends Component {
 
   render() {
 const { index, direction } = this.state;
-const { events } = this.props
+const { events } = this.props;
 
 return (
 	<React.Fragment>
@@ -38,7 +38,7 @@ return (
 		<Link to={"/event/"+events.id}>
 		<div className="carouselMask">
 			<p className="carouselTitle text-center">{events.title}</p>
-			<p className="carouselTitle text-center">{events.begin_time}</p>
+			<p className="carouselTitle text-center">{events.begin_time.slice(0, -6)}</p>
 	    </div>
 				<img
 					className="carouselImg d-block w-100 ofc"
@@ -46,8 +46,8 @@ return (
 					alt={events.title}
 				/>
 				<Carousel.Caption>
-					
-				
+
+
 				</Carousel.Caption>
 			</Link>
 		</Carousel.Item>

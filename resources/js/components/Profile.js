@@ -61,9 +61,9 @@ export default class Profile extends Component {
   }
   componentDidMount(){
     this.getProfile()
-    
-    
-    
+
+
+
   }
   componentDidUpdate(){
     this.getProfile()
@@ -77,11 +77,11 @@ export default class Profile extends Component {
           <i className="fa fa-edit"></i>
         </Link>
         </h1>
-        
+
 
         <div className="row">
-          <div className="col-sm-6">{this.state.eventsCreated.map(events => ( <p> <Link to={"/event/"+events.id}>{events.title}</Link> <div className="float-right"> <Link to={"/edit/event/"+events.id}><i className="fa fa-edit"></i></Link> <a href="javascript:void()" onClick={() => this.cancelEvent(events.id)}><i className="fa fa-trash"></i></a></div> </p>))}</div>
-          <div className="col-sm-6">{this.state.eventsParticipateIn.map(events => ( <p> <Link to={"/event/"+events.id}>{events.title}</Link> </p>))}</div>
+          <div className="col-sm-6">{this.state.eventsCreated.map(events => ( <p key={events.id + 'created'}><Link to={"/event/"+events.id}>{events.title}</Link> <div className="float-right"> <Link to={"/edit/event/"+events.id}><i className="fa fa-edit"></i></Link> <a href="javascript:void()" onClick={() => this.cancelEvent(events.id)}><i className="fa fa-trash"></i></a></div> </p>))}</div>
+          <div className="col-sm-6">{this.state.eventsParticipateIn.map(events => ( <p key={events.id + 'participates'}><Link to={"/event/"+events.id}>{events.title}</Link> </p>))}</div>
         </div>
       </div>
     )
