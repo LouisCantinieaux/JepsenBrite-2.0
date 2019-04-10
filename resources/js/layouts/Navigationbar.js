@@ -19,7 +19,8 @@ class Navigationbar extends Component {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Link className="nav-link ml-5" to="/events">All events</Link>
+            <Link className="nav-link" to="/events">All events</Link>
+            <Link className="nav-link" to="/events/future">Future events</Link>
           </Nav>
           <Context.Consumer>
             {(context) => (

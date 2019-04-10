@@ -59,17 +59,17 @@ export default class EditEvent extends Component {
     const obj={
       "title" : this.state.title,
       "description" : this.state.description,
-      "begin_time" : dateFormatting(this.state.start),
-      "end_time" : dateFormatting(this.state.end),
+      "begin_time" : (this.state.start ? dateFormatting(this.state.start) : this.state.begin_time),
+      "end_time" :(this.state.end? dateFormatting(this.state.end): this.state.end_time),
       "location" : this.state.location,
-      "image" : this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1)
+      "image" : (this.state.imagePreviewUrl ? this.state.imagePreviewUrl.substr(this.state.imagePreviewUrl.indexOf(',') + 1) : this.state.image)
     }
     let response;
     
     try {
       let request = Axios({
         method:'patch',
-        url : '/api/events',
+        url : '/api/events/'+this.props.match.params.id,
         config: { },
         headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token},
         data : obj
@@ -79,6 +79,7 @@ export default class EditEvent extends Component {
       console.log(e);
       console.log(e.response);
     }
+    this.props.history.push('/event/'+this.props.match.params.id)
   }
 
   handleImageChange(e) {
@@ -174,6 +175,7 @@ export default class EditEvent extends Component {
           name={"start"}
           data-enable-time
           value={this.state.begin_time}
+          defaultValue={this.state.begin_time}
           options={{
             altInput: true,
             time_24hr: true,
@@ -189,6 +191,7 @@ export default class EditEvent extends Component {
           name={"end"}
           data-enable-time
           value={this.state.end_time}
+          defaultValue={this.state.end_time}
           options={{
             altInput: true,
             minDate:this.state.start,
@@ -206,3 +209,5 @@ export default class EditEvent extends Component {
     )
   }
 }
+
+EditEvent.contextType = Context
