@@ -25,12 +25,15 @@ export default class EventPage extends Component {
   componentDidUpdate(){
   }
   async componentDidMount(){
+    const userID = window.sessionStorage.getItem('id');
+    console.log('userID', userID);
+
     let response = await Axios({
       method:'get',
       url : '/api/events/'+this.props.match.params.id,
       headers: {'Content-Type': 'application/json' }
     })
-
+    console.log(response.data.participants);
     this.setState({
       title: response.data.title,
       description: response.data.description,
@@ -39,7 +42,8 @@ export default class EventPage extends Component {
       location : response.data.location,
       image : response.data.image,
       creator: response.data.creator[0].name,
-      participants: response.data.participants
+      participants: response.data.participants,
+      participation: response.data.participants.reduce((v, acc) => userID == v.id || acc, false)
     })
   }
 
