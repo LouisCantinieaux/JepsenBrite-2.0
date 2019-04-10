@@ -11,7 +11,8 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.state ={
       email : '',
-      password : ''
+      password : '',
+      error:""
     }
   }
 
@@ -46,6 +47,9 @@ class Login extends Component {
         console.log('login success', response)
     } catch(e) {
       console.log('login error', e.response);
+      this.setState({
+        error: 'You have an error in your email or password'
+      })
     }
     (response) => { console.log(response) }
     this.context.state.login(response.data.access_token)
@@ -57,7 +61,8 @@ class Login extends Component {
   render() {
     return (
 
-      <Container>
+      <Container className='my-3'>
+        {(this.state.error ? <div className="w-100 bg-danger text-center text-light font-weight-bold" style={{height:"100px", lineHeight:"100px"}}>{this.state.error}</div> : <div></div>)}
         <Form  onSubmit={this.onSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

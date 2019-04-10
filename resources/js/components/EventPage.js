@@ -124,7 +124,7 @@ export default class EventPage extends Component {
           <div className="participants">
             {this.state.participants.map(participants => (
               <div className="participant text-center"  key={participants.name}>
-                <img className="ofc rotate" src={(this.state.image ?"data:image;base64,"+participants.avatar :"https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png")} />
+                <img className="ofc rotate" src={(participants.avatar ?"data:image;base64,"+participants.avatar :"https://i2.wp.com/rouelibrenmaine.fr/wp-content/uploads/2018/10/empty-avatar.png")} />
                 <p>{participants.name}</p>
               </div>
             ))}

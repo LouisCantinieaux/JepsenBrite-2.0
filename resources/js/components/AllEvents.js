@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 
-export default class Events extends Component {
+export default class AllEvents extends Component {
   constructor(){
     super()
     this.state= {
@@ -10,20 +10,9 @@ export default class Events extends Component {
     }
   }
   async componentDidMount(){
-    function dateNow(date){
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-
-      var hours = date.getHours();
-      var min = date.getMinutes();
-      var sec = date.getSeconds();
-
-      return year + '-' +(month < 10 ? "0" + month : month) + '-' + (day < 10 ? "0" + day : day) + '%20' + (hours < 10 ? "0" + hours : hours) +'%3'+ (min < 10 ? "0" + min : min)+ '%3' + (sec < 10 ? "0" + sec : sec)
-    }
     let result = await axios({
           method:'get',
-          url : '/api/events?from='+dateNow(new Date),
+          url : '/api/events',
           config: { headers: {'Content-Type': 'application/json' }}
         })
     this.setState({
@@ -34,7 +23,7 @@ export default class Events extends Component {
     let events = this.state.events;
     return (
       <React.Fragment>
-        <h1 className="text-center mt-3">All future events</h1>
+        <h1 className="text-center mt-3">All events</h1>
         <hr/>
         <div className="cards row mx-auto pb-4">
 

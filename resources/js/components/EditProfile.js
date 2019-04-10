@@ -67,6 +67,7 @@ export default class EditProfile extends Component {
       console.log(e.response);
     }
     console.log('ceci est une réponse', response);
+    this.props.history.push('/profile')
   }
 
   handleImageChange(e) {

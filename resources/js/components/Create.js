@@ -74,6 +74,7 @@ class Create extends Component {
       console.log(e);
       console.log(e.response);
     }
+    this.props.history.push('/')
   }
 
   handleImageChange(e) {

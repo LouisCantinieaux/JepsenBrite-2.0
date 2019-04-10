@@ -15,7 +15,7 @@ export default class Register extends Component {
       name: '',
       email: '',
       password: '',
-      PasswordConfirmation: '',
+      PasswordConfirmation: ''
 
     }
   }
@@ -39,39 +39,48 @@ export default class Register extends Component {
   }
 
   onChangePasswordConfirmation(e) {
+    
     this.setState({
-      passwordConfirmation: e.target.value
+      PasswordConfirmation: e.target.value
     });
   }
 
   async onSubmit(data) {
     data.preventDefault();
-
-    const obj = {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
+    if (this.state.password === this.state.PasswordConfirmation){
+      const obj = {
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      }
+      let response;
+      try {
+        //console.log(obj)
+        let request = Axios({
+          method: 'post',
+          url: '/api/register',
+          config: { headers: { 'Content-Type': 'application/json' } },
+          data: obj
+        });
+        response = await request;
+      } catch (e) {
+        console.log(e.response);
+        this.setState({
+          error: "You have an error somewhere"
+        })
+      }
+      this.props.history.push('/login')
+    } else{
+      this.setState({
+        error: "Your password doesn't match with the confirmation"
+      })
     }
-    let response;
-    try {
-      //console.log(obj)
-      let request = Axios({
-        method: 'post',
-        url: '/api/register',
-        config: { headers: { 'Content-Type': 'application/json' } },
-        data: obj
-      });
-      response = await request;
-    } catch (e) {
-      console.log(e.response);
-    }
-    (response) => { console.log(response) }
-
   }
 
   render() {
     return (
       <Container>
+        {(this.state.error ? <div className="w-100 bg-danger text-center text-light font-weight-bold" style={{height:"100px", lineHeight:"100px"}}>{this.state.error}</div> : <div></div>)}
         <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="formBasicUser">
             <Form.Label>User</Form.Label>
@@ -93,7 +102,7 @@ export default class Register extends Component {
 
           <Form.Group controlId="formBasicPasswordConfirm">
             <Form.Label>Password confirmation</Form.Label>
-            <Form.Control type="password" placeholder="PasswordConfirmation" defaultValue={this.state.PasswordConfirmation} onChange={this.onChangePasswordConfirmation} required />
+            <Form.Control type="password" placeholder="Password Confirmation" defaultValue={this.state.PasswordConfirmation} onChange={this.onChangePasswordConfirmation} required />
           </Form.Group>
 
           <Button variant="primary" type="submit">
