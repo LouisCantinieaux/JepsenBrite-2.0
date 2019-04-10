@@ -3,6 +3,17 @@ import { Link } from 'react-router-dom'
 
 export default class EventCardHome extends Component {
 
+  parseDBDateTime(datetime){
+    console.log('datetime:', datetime);
+    if(datetime == '')
+      return new Date(Date.now());
+    let [date, time] = datetime.split(' ');
+    let [Y,M,D] = date.split('-');
+    time = time.slice(0, -3);
+    let [h,m,s] = time.split(':');
+    return new Date(Date.UTC(Y,M-1,D,h,m,s));
+  }
+
   render() {
 
     const { events } = this.props
@@ -23,8 +34,8 @@ export default class EventCardHome extends Component {
                 <div className="card-body">
                   <h5 className="card-title">{events.title}</h5>
                   <hr />
-                  <p className="location"><i className="fa fa-map-marker"></i> {events.location}</p> 
-                  <p className="date"><b>From</b> {events.begin_time} <b>To</b> {events.end_time}</p>
+                  <p className="location"><i className="fa fa-map-marker"></i> {events.location}</p>
+                  <p className="date"><b>From</b> {this.parseDBDateTime(events.begin_time).toLocaleString()} <b>To</b> {this.parseDBDateTime(events.end_time).toLocaleString()}</p>
                   <p>
                     <a className="mapsBtn btn btn-primary" data-toggle="collapse" href={"#collapse" + events.id} role="button" aria-expanded="false" aria-controls={"collapse" + events.id}>
                       <i className="fa fa-map"></i> Show on map

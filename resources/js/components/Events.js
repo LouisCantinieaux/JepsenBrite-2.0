@@ -19,6 +19,18 @@ export default class Events extends Component {
       events: result.data
     })
   }
+
+  parseDBDateTime(datetime){
+    console.log('datetime:', datetime);
+    if(datetime == '')
+      return new Date(Date.now());
+    let [date, time] = datetime.split(' ');
+    let [Y,M,D] = date.split('-');
+    time = time.slice(0, -3);
+    let [h,m,s] = time.split(':');
+    return new Date(Date.UTC(Y,M-1,D,h,m,s));
+  }
+
   render() {
     let events = this.state.events;
     return (
@@ -36,7 +48,7 @@ export default class Events extends Component {
                   <div className="card-body">
                     <h5 className="card-title">{events.title}</h5>
                     <hr />
-                    <p>{events.location} - <b>From</b> {events.begin_time} <b>To</b> {events.end_time}</p>
+                    <p>{events.location} - <b>From</b> {this.parseDBDateTime(events.begin_time).toLocaleString()} <b>To</b> {this.parseDBDateTime(events.end_time).toLocaleString()}</p>
                     <p>
                       <a className="mapsBtn btn btn-primary" data-toggle="collapse" href={"#collapse" + events.id} role="button" aria-expanded="false" aria-controls={"collapse" + events.id}>
                         <i className="fa fa-map"></i> Show on map

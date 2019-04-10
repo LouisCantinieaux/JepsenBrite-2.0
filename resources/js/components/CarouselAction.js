@@ -21,6 +21,17 @@ export default class CarouselAction extends Component {
     });
   }
 
+  parseDBDateTime(datetime){
+    console.log('datetime:', datetime);
+    if(datetime == '')
+      return new Date(Date.now());
+    let [date, time] = datetime.split(' ');
+    let [Y,M,D] = date.split('-');
+    time = time.slice(0, -3);
+    let [h,m,s] = time.split(':');
+    return new Date(Date.UTC(Y,M-1,D,h,m,s));
+  }
+
   render() {
 const { index, direction } = this.state;
 const { events } = this.props;
@@ -38,7 +49,7 @@ return (
 		<Link to={"/event/"+events.id}>
 		<div className="carouselMask">
 			<p className="carouselTitle text-center">{events.title}</p>
-			<p className="carouselTitle text-center">{events.begin_time.slice(0, -6)}</p>
+			<p className="carouselTitle text-center">{this.parseDBDateTime(events.begin_time).toLocaleString()}</p>
 	    </div>
 				<img
 					className="carouselImg d-block w-100 ofc"
