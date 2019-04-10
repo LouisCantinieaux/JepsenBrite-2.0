@@ -38,10 +38,7 @@ class Navigationbar extends Component {
                   </Link>
                 </Nav>
                   case true: return <Nav>
-                    <NavDropdown title={"Welcome, "+context.state.name} >
-                      <Link to ="/profile" className="dropdown-item"><i className="fa fa-user-circle mr-2"></i>Your profile</Link>
-                      <Link to ="/events" className="dropdown-item"><i className="fa fa-calendar mr-2"></i>Your events</Link>
-                    </NavDropdown>
+                    <Link className="nav-link" to ="/profile"><i className="fa fa-user-circle mr-2"></i>Welcome, {context.state.name}</Link>
                     <Link className="nav-link" to="/create">Create an event</Link>
                     <Link className="nav-link" to="/" onClick={context.state.logout} >
                       logout
