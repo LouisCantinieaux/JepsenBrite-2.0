@@ -40,25 +40,24 @@ export default class Provider extends Component {
           window.sessionStorage.clear();
         },
       refresh : async (token)=>{
-        console.log(token)
         let response;
         try {
           response = await Axios({
             method:'post',
             url : '/api/refresh',
-            headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+token }
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json', 'Authorization' : 'Bearer '+token }
           })
           this.setState({
-            token: response.data.token
+            token: response.data.access_token
           })
+          console.log(response.data.access_token)
         } catch(e) {console.log(e.response);}
 
-        // response = await request;
-
-    }
+      }
     }
   }
   componentDidMount(){
+    // this.state.refresh(window.sessionStorage.getItem('token'))
     this.setState({
       token : window.sessionStorage.getItem('token'),
       loggedIn : JSON.parse(window.sessionStorage.getItem('loggedIn')),
