@@ -65,7 +65,7 @@ class EventController extends Controller
 
     public function showAll(Request $request)
     {
-        $max = 20;
+        // $max = 20;
         $events = Event::orderBy('end_time')->orderBy('begin_time');
         if($from = $request->input('from', false)){
             $events->where('end_time', '>=', $from);
@@ -73,11 +73,11 @@ class EventController extends Controller
         if($to = $request->input('to', false)){
             $events->where('begin_time', '<=', $to);
         }
-        $number = $request->input('number', $max);
-        $number = $number > $max ? $max : $number;
-        $offset = $request->input('offset', 0);
+        // $number = $request->input('number', $max);
+        // $number = $number > $max ? $max : $number;
+        // $offset = $request->input('offset', 0);
 
-        $events->skip($offset)->take($number);
+        // $events->skip($offset)->take($number);
 
         return response()->json($events->get(), 200);
     }

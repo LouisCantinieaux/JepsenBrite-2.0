@@ -5,24 +5,26 @@ import { Link } from 'react-router-dom'
 export default class AllEvents extends Component {
   constructor(props){
     super(props)
-    this.previousPage=this.previousPage.bind(this)
-    this.nextPage=this.nextPage.bind(this)
+    this.handleClick = this.handleClick.bind(this);
     this.state= {
       events: [],
-      currentPage: this.props.match.params.page,
-      currentEvents:[],
-      eventsPerPage: 12,
-      offset : 0
+      currentPage: 1,
+      eventsPerPage: 8
     }
   }
   previousPage() {
     this.setState({
-      currentPage: Number(this.state.currentPage -1)
+      currentPage: this.state.currentPage -1
+    });
+  }
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
     });
   }
   nextPage() {
     this.setState({
-      currentPage: Number(this.state.currentPage +1)
+      currentPage: this.state.currentPage +1
     });
   }
   async componentDidMount(){
@@ -39,29 +41,29 @@ export default class AllEvents extends Component {
   }
   render() {
     
-    const { events, currentPage, eventsPerPage, currentEvents } = this.state;
-    // (this.state.currentPage ===1 ? currentEvents = this.state.events.slice(0, -2) :  currentEvents = this.state.events.slice(1,-1))
-    console.log(currentPage)
-    
+    const { events, currentPage, eventsPerPage } = this.state;
 
     
 
+    
     const indexOfLastEvents = currentPage * eventsPerPage;
     const indexOfFirstEvents = indexOfLastEvents - eventsPerPage;
-
-
+    const currentEvents = events.slice(indexOfFirstEvents, indexOfLastEvents);
     const pageNumbers = [];
+
     for (let i = 1; i <= Math.ceil(events.length / eventsPerPage); i++) {
+
       pageNumbers.push(i);
     }
+    console.log (pageNumbers)
     return (
       <React.Fragment>
         <h1 className="text-center mt-3">All events</h1>
         <hr/>
         <div className="cards row mx-auto pb-4">
 
-            {events.map((events,index) => (
-              <div className="col-md-3 mt-2" key={index}>
+            {currentEvents.map((events) => (
+              <div className="col-md-3 mt-2" key={events.id}>
                 <div className="card text-center mt-3">
                   <Link to={"/event/"+events.id}>
                     <img className="card-img-top ofc" src={"data:image;base64,"+events.image} alt={events.title} />
@@ -86,12 +88,15 @@ export default class AllEvents extends Component {
               </div>
                 ))}
           </div>
-          {/* <nav aria-label="Page navigation example">
+          <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-center mt-5">
-              {currentPage ===1 ? (<li className="page-item"><a className="page-link" href="#" id="TEXT" onClick={this.previousPage}>Page précédente</a></li>) : <li></li>}
-              <li className="page-item"><a className="page-link" href="#" id="TEXT" onClick={this.nextPage}>Page suivante</a></li>
+              {currentPage !==1 ? (<li className="page-item"><a className="page-link" href="#" id="TEXT" onClick={this.previousPage}>Page précédente</a></li>) : <li></li>}
+              {pageNumbers.map(page => (
+                <li key={page}  className="page-item"><a href="#" id={page} onClick={this.handleClick}  className="page-link">{page}</a></li>
+              ))}
+              {currentPage !==pageNumbers.length ? <li className="page-item"><a className="page-link" href="#" id="TEXT" onClick={this.nextPage}>Page suivante</a></li> : <li></li>}
             </ul>
-          </nav> */}
+          </nav>
         </React.Fragment>
     )
   }
