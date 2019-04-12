@@ -51,7 +51,7 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Couldn\'t register user.'], 500);
         }
-        // Mail::to($credentials['email'])->send(new Registered());
+        Mail::to($credentials['email'])->send(new Registered());
         return $this->respondWithToken($token);
     }
 
