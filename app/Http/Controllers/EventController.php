@@ -129,4 +129,13 @@ class EventController extends Controller
             'participates_in' => $participatesIn
         ], 200);
     }
+
+    public function inviteToEvent(Request $request)
+    {
+        $pseudoCurrentUser = auth()->user()->name;
+        $mail = new Reminder($pseudoCurrentUser);
+        $recipient = request(['email']);
+        Mail::to($recipient)->send($mail);
+
+    }
 }
