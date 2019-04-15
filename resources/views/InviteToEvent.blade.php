@@ -1,12 +1,12 @@
 @component('mail::message')
-# Introduction
+# Bonjour !
 
-The body of your message.
+Vous avez été invité à l'évenement : '{{ $currentEvent->title }}' par son créateur, {{ $pseudoCurrentUser }}
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::button', ['url' => $currentEventUrl])
+Link to register to the event
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Adieu<br>
+
 @endcomponent
