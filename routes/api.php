@@ -35,4 +35,6 @@ Route::middleware('auth:api')->group(function () {
 
     Route::patch('events/{event}', 'EventController@update');
     Route::delete('events/{event}', 'EventController@cancel');
+
+    Route::post('events/{event}/invite', 'EventController@inviteToEvent');
 });

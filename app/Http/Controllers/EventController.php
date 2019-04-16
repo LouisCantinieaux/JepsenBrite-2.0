@@ -6,6 +6,9 @@ use App\Event;
 use App\Participation;
 use Illuminate\Http\Request;
 use Auth;
+use App\Mail\InviteToEvent;
+use Illuminate\Support\Facades\Mail;
+
 
 class EventController extends Controller
 {
@@ -128,5 +131,15 @@ class EventController extends Controller
             'created_events' => $createdEvents,
             'participates_in' => $participatesIn
         ], 200);
+    }
+
+    public function inviteToEvent(Request $request, Event $event)
+    {
+        $pseudoCurrentUser = auth()->user()->name;
+        // $idCurrentUser = ($request->route('event');
+        // $currentEvent = Event::where('id', '=', $idCurrentUser)->get();
+        $mail = new InviteToEvent($event, $pseudoCurrentUser);
+        $recipient = request(['email']);
+        Mail::to($recipient)->send($mail);
     }
 }

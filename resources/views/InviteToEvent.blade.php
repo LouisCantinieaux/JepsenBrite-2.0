@@ -2,7 +2,7 @@
 
 # Welcome to JepsenBrite !
 
-##{user.id} invites you at the {name.event} event.
+##{{ $pseudoCurrentUser }} invites you at the '{{ $currentEvent->title }}' event.
 ![picture of event](http://example.com/images/example.png)
 
 If you want to participate in this event, please click on the following link :
@@ -14,10 +14,10 @@ See you soon !
 {logo of the website with link to the site}
 
 
-@component('mail::button', ['url' => 'https://jepsenbrite.herokuapp.com'])
-Button Text
+@component('mail::button', ['url' => $currentEventUrl])
+Link to register to the event
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Adieu<br>
+
 @endcomponent
