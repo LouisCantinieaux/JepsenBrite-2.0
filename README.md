@@ -1,8 +1,8 @@
 # JepsenBrite
 
-The job was to take the [application](https://github.com/PaulineRoppe/jepsenbrite) of another group and while fixing some minor bugs, adding new features. Obviously we had to keep the design of the original owner. You can check the original application on this [link](https://jepsen-brite.herokuapp.com/).
+The job was to take the [application](https://github.com/rabujev/JepsenBrite-2.0) of another group and while fixing some minor bugs, adding new features. Obviously we had to keep the design of the original owner. You can check the original application on this [link](https://jepsen-brite.herokuapp.com/).
 
-The application is still a CRUD Application to manage events online. If you want to know how the new version looks like check it out [here](https://jepsen-brite-v2.herokuapp.com/).
+The application is still a CRUD Application to manage events online. If you want to know how the new version looks like check it out [here](url de la nouvelle application).
 
 ## Built With
 
@@ -12,14 +12,15 @@ The application is still a CRUD Application to manage events online. If you want
 
 ## Authors of the modifications
 
-* [**Julien Caramazza**](https://github.com/Jucara) *(Backend)*
-* [**Vincent Chilot**](https://github.com/Raigyo) *(Frontend)*
-* [**Michael Lambrechts**](https://github.com/MichaelLambrechts) *(Frontend)*
-* [**Thibaut Janssens**](https://github.com/ThibautJanssens) *(Full Stack)*
+* [**Louis Cantinieaux**](https://github.com/LouisCantinieaux) *(Backend)*
+* [**Pauline Roppe**](https://github.com/PaulineRoppe) *(Frontend)*
+* [**Lara Loicq**](https://github.com/LaraLcq) *(Frontend)*
+* [**Jamal Rabujev**](https://github.com/Rabujev) *(Full Stack)*
+* [***Vadim Radermacher*](https://github.com/VadimRadermacher) *(Full Stack)*
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+No License because we are free
 
 ## Getting Started
 
@@ -68,7 +69,7 @@ sudo chmod +x launchscript.sh
 
 ## Deployment
 
-The project is ready to deploy on heroku, just push this repo to your herokuapp repository.
+The project is ready to deploy on heroku (following your setting it will deploy on heroku manually or autommatically), just push this repo to your herokuapp repository.
 Add you addon for the database with the following :
 ```cmd
 heroku addons:create heroku-postgresql:hobby-dev
@@ -87,10 +88,6 @@ Don't forget to edit the configs with:
  php artisan migrate:fresh
  ```
 to set your database
-
-## Documentation (API)
-
-## Authentication
 
 ### POST /register
 
@@ -112,7 +109,6 @@ Only takes a JSON as input.
     "password":"yourPassword"
 }
 ```
-## Event
 
 ### Event object
 
