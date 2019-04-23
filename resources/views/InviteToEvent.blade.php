@@ -7,16 +7,13 @@
 
 If you want to participate in this event, please click on the following link :
 @component('mail::button', ['url' => $currentEventUrl])
-Link to register to the events
+Link to register to the event
 @endcomponent
 
-We hope to count you among the next participants in our events
+We hope to count you among the next participants in our events<br>
 See you soon !
 
-{logo of the website with link to the site}
+{logo of the website with link to the website}
 
-
-
-Adieu<br>
 
 @endcomponent

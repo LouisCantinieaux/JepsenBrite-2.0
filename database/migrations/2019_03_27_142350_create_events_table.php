@@ -21,8 +21,8 @@ class CreateEventsTable extends Migration
             $table->dateTimeTz('begin_time');
             $table->dateTimeTz('end_time');
             $table->text('location');
-            $table->text('image');
-            $table->text('video');
+            $table->text('image')->nullable();
+            $table->text('video')->nullable();
             $table->bigInteger('creator_id');
             $table->foreign('creator_id')->references('id')->on('users');
             $table->softDeletes();

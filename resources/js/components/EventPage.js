@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Axios from 'axios'
+import {Form, Container} from 'react-bootstrap'
+
 import ReactMarkdown from 'react-markdown'
 import {Provider, Context} from '../store/store'
 import { request } from 'http';
 
 export default class EventPage extends Component {
-  constructor(context){
-    super(context)
+  constructor(props,context){
+    super(props,context)
     this.participate=this.participate.bind(this)
     this.unparticipate=this.unparticipate.bind(this)
+    this.onChangeEmail=this.onChangeEmail.bind(this)
+    this.handleOnChange=this.handleOnChange.bind(this)
+    this.onSubmit=this.onSubmit.bind(this)
     this.state={
+      email:"",
       title: '',
       description:'',
       creator:'',
@@ -22,8 +28,68 @@ export default class EventPage extends Component {
       participation:false
     }
   }
-  componentDidUpdate(){
+////////////test start
+componentDidUpdate(){
+  this.state
+}
+
+async onSubmit(data){
+  data.preventDefault();
+  const obj={
+    "email" : this.state.email
   }
+  let response;
+
+  try {
+    let request = Axios({
+      method:'post',
+      url : '/api/events/invite/'+this.props.match.params.id,
+      headers: {'Content-Type': 'application/json', 'Authorization' : 'Bearer '+this.context.state.token},
+      data : obj
+    });
+    response = await request;
+  } catch(e) {
+    console.log(e);
+    console.log(e.response);
+  }
+  this.props.history.push('/')
+}
+
+
+handleOnChange(e, from) {
+  const state = {};
+  switch (from) {
+    case "start":
+      if (this.state.start) {
+        if (this.state.end >= e[0]) {
+          state[from] = e[0];
+        }
+      } else {
+        state[from] = e[0];
+      }
+      break;
+    case "end":
+      if (this.state.end) {
+        if (this.state.start <= e[0]) {
+          state[from] = e[0];
+        }
+      } else {
+        state[from] = e[0];
+      }
+      break;
+    default:
+  }
+  this.setState(state);
+}
+
+
+onChangeEmail(e){
+  this.setState({
+    email : e.target.value
+  })
+}
+
+////////////test end
   async componentDidMount(){
     const userID = window.sessionStorage.getItem('id');
     console.log('userID', userID);
@@ -138,6 +204,16 @@ export default class EventPage extends Component {
             ))}
           </div>
         </div>
+        <h1 className="mb-5">Invite a friend to this event</h1>
+          <Form onSubmit={this.onSubmit}>
+            <Form.Group className="createForm">
+              <Form.Label>What's the email address of your friend?</Form.Label>
+              <Form.Control className="mb-3" type="text" placeholder="email address" defaultValue={this.state.email} onChange={this.onChangeEmail} />
+
+              <Form.Control className="btn btn-primary" type="submit" value="Invite this friend" />
+            </Form.Group>
+          </Form>
+
       </div>
     )
   }
